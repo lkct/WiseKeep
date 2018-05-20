@@ -20,6 +20,13 @@
 
     </android.support.design.widget.AppBarLayout>
 
-    <include layout="@layout/content_wise_keep_income" />
+    <include
+        android:id="@+id/include_in"
+        layout="@layout/content_wise_keep_income"
+        android:visibility="invisible" />
+
+    <include
+        android:id="@+id/include_out"
+        layout="@layout/content_wise_keep_outcome"/>
 
 </android.support.design.widget.CoordinatorLayout>

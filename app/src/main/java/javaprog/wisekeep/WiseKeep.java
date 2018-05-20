@@ -69,8 +69,7 @@ public class WiseKeep extends AppCompatActivity
         //noinspection SimplifiableIfStatement
         if (id == R.id.action_date) {
             return true;
-        }
-        if (id == R.id.action_add) {
+        } else if (id == R.id.action_add) {
             return true;
         }
         return super.onOptionsItemSelected(item);
@@ -82,10 +81,12 @@ public class WiseKeep extends AppCompatActivity
         // Handle navigation view item clicks here.
         int id = item.getItemId();
 
-        if (id == R.id.nav_income) {
-            // Handle the camera action
-        } else if (id == R.id.nav_outcome) {
-
+        if (id == R.id.nav_outcome) {
+            findViewById(R.id.include_in).setVisibility(View.INVISIBLE);
+            findViewById(R.id.include_out).setVisibility(View.VISIBLE);
+        } else if (id == R.id.nav_income) {
+            findViewById(R.id.include_in).setVisibility(View.VISIBLE);
+            findViewById(R.id.include_out).setVisibility(View.INVISIBLE);
         } else if (id == R.id.nav_summary) {
 
         } else if (id == R.id.nav_settings) {
