@@ -1,5 +1,6 @@
 package javaprog.wisekeep;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.support.design.widget.FloatingActionButton;
 import android.support.design.widget.Snackbar;
@@ -88,9 +89,11 @@ public class WiseKeep extends AppCompatActivity
             findViewById(R.id.include_in).setVisibility(View.VISIBLE);
             findViewById(R.id.include_out).setVisibility(View.INVISIBLE);
         } else if (id == R.id.nav_summary) {
-
+            Intent intent = new Intent(WiseKeep.this, Summary.class);
+            startActivity(intent);
         } else if (id == R.id.nav_settings) {
-
+            Intent intent = new Intent(WiseKeep.this, Settings.class);
+            startActivity(intent);
         }
 
         DrawerLayout drawer = (DrawerLayout) findViewById(R.id.drawer_layout);
