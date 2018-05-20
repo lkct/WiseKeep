@@ -19,6 +19,55 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
+        <activity
+            android:name=".Settings"
+            android:label="@string/title_activity_settings"
+            android:parentActivityName=".WiseKeep"
+            android:theme="@style/AppTheme.NoActionBar">
+            <meta-data
+                android:name="android.support.PARENT_ACTIVITY"
+                android:value="javaprog.wisekeep.WiseKeep" />
+        </activity>
+        <activity
+            android:name=".Summary"
+            android:label="@string/title_activity_summary"
+            android:parentActivityName=".WiseKeep"
+            android:theme="@style/AppTheme.NoActionBar">
+            <meta-data
+                android:name="android.support.PARENT_ACTIVITY"
+                android:value="javaprog.wisekeep.WiseKeep" />
+        </activity>
+        <activity
+            android:name=".NewIncome"
+            android:label="@string/title_activity_new_income"
+            android:parentActivityName=".WiseKeep"
+            android:theme="@style/AppTheme.NoActionBar">
+            <meta-data
+                android:name="android.support.PARENT_ACTIVITY"
+                android:value="javaprog.wisekeep.WiseKeep" />
+        </activity>
+        <activity
+            android:name=".NewOutcome"
+            android:label="@string/title_activity_new_outcome"
+            android:parentActivityName=".WiseKeep"
+            android:theme="@style/AppTheme.NoActionBar">
+            <meta-data
+                android:name="android.support.PARENT_ACTIVITY"
+                android:value="javaprog.wisekeep.WiseKeep" />
+        </activity>
+        <activity
+            android:name=".IncomeDetail"
+            android:label="@string/title_activity_income_detail"
+            android:parentActivityName=".WiseKeep"
+            android:theme="@style/AppTheme.NoActionBar">
+            <meta-data
+                android:name="android.support.PARENT_ACTIVITY"
+                android:value="javaprog.wisekeep.WiseKeep" />
+        </activity>
+        <activity
+            android:name=".OutcomeDetail"
+            android:label="@string/title_activity_outcome_detail"
+            android:theme="@style/AppTheme.NoActionBar"></activity>
     </application>
 
 </manifest>
