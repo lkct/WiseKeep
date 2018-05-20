@@ -1,9 +1,6 @@
 package javaprog.wisekeep;
 
-import android.app.Activity;
 import android.app.Application;
-import android.widget.Toast;
-
 import java.io.ByteArrayOutputStream;
 import java.io.FileInputStream;
 import java.io.FileNotFoundException;
@@ -21,15 +18,12 @@ public class FileApp extends Application {
     }
 
     // global methods
-    private void save() {
-        String content = editText.getText().toString();
+    private void saveSet(String fileName) {
         try {
-            FileOutputStream outputStream = openFileOutput(fileName,
-                    Activity.MODE_PRIVATE);
+            FileOutputStream outputStream = openFileOutput(fileName, MODE_PRIVATE);
             outputStream.write(content.getBytes());
             outputStream.flush();
             outputStream.close();
-            Toast.makeText(MainActivity.this, "保存成功", Toast.LENGTH_LONG).show();
         } catch (FileNotFoundException e) {
             e.printStackTrace();
         } catch (IOException e) {
@@ -37,15 +31,13 @@ public class FileApp extends Application {
         }
     }
 
-    private void init() {
+    private void initSet(String fileName) {
         String content = "123";
         try {
-            FileOutputStream outputStream = openFileOutput(fileName,
-                    Activity.MODE_PRIVATE);
+            FileOutputStream outputStream = openFileOutput(fileName, MODE_PRIVATE);
             outputStream.write(content.getBytes());
             outputStream.flush();
             outputStream.close();
-            Toast.makeText(MainActivity.this, "成功", Toast.LENGTH_LONG).show();
         } catch (FileNotFoundException e) {
             e.printStackTrace();
         } catch (IOException e) {
@@ -53,7 +45,7 @@ public class FileApp extends Application {
         }
     }
 
-    private void read() {
+    private void readSet(String fileName) {
         try {
             FileInputStream inputStream = this.openFileInput(fileName);
             byte[] bytes = new byte[1024];
@@ -63,9 +55,6 @@ public class FileApp extends Application {
             }
             inputStream.close();
             arrayOutputStream.close();
-            String content = new String(arrayOutputStream.toByteArray());
-            showTextView.setText(content);
-
         } catch (FileNotFoundException e) {
             init();
             read();
