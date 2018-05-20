@@ -15,4 +15,5 @@
     <string name="title_activity_new_outcome">NewOutcome</string>
     <string name="title_activity_income_detail">IncomeDetail</string>
     <string name="title_activity_outcome_detail">OutcomeDetail</string>
+    <string name="author">Author 梁坤昌泰 严克强 李孝天</string>
 </resources>
