@@ -10,6 +10,15 @@ import java.io.IOException;
 public class FileApp extends Application {
 
     // global vars
+    public static int budgetPerMonth;
+    public static int startingDate;
+    public static int goalPerMonth;
+
+    public class Term {
+        public int amount;
+        public int type;
+        public String description;
+    }
 
     @Override
     public void onCreate() {
