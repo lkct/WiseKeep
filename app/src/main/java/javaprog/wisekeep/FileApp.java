@@ -9,6 +9,7 @@ import java.io.FileOutputStream;
 import java.io.FileNotFoundException;
 import java.io.IOException;
 import java.util.ArrayList;
+import java.util.Calendar;
 
 public class FileApp extends Application {
 
@@ -120,6 +121,39 @@ public class FileApp extends Application {
         } catch (IOException e) {
             e.printStackTrace();
         }
+    }
+
+    public static String makeFileName() {
+        Calendar c = Calendar.getInstance();
+        int YEAR  = c.get(Calendar.YEAR);
+        int MONTH = c.get(Calendar.MONTH);
+        int DAY = c.get(Calendar.DAY_OF_MONTH);
+        int DATE = 10000 * YEAR + 100 * MONTH + DAY;
+        StringBuffer NAME = new StringBuffer();
+        for (int i = 0; i < 8; i++) {
+            int tmp = DATE % 10;
+            NAME.append(tmp+'0');
+            DATE /= 10;
+        }
+        String name = new String(NAME.reverse());
+        return name;
+    }
+
+    public static String int2String(int x) {
+        StringBuffer s = new StringBuffer();
+        for (int i = 0; i < 2; i++) {
+            int tmp = x % 10;
+            s.append(tmp + '0');
+            x /= 10;
+        }
+        s.append('.');
+        while (x != 0) {
+            int tmp = x % 10;
+            s.append(tmp + '0');
+            x /= 10;
+        }
+        String r = new String(s.reverse());
+        return r;
     }
 
 }

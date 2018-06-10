@@ -8,4 +8,51 @@
     tools:context=".OutcomeDetail"
     tools:showIn="@layout/activity_outcome_detail">
 
+    <TextView
+        android:id="@+id/outcomeOfToday"
+        android:layout_width="110dp"
+        android:layout_height="40dp"
+        android:layout_marginStart="8dp"
+        android:layout_marginTop="8dp"
+        android:background="#2429b4"
+        android:gravity="center"
+        android:text="Today's Outcome\n"
+        android:textColor="#ffffff"
+        android:textSize="12sp"
+        android:textStyle=""
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <TextView
+        android:id="@+id/remaining"
+        android:layout_width="110dp"
+        android:layout_height="40dp"
+        android:layout_marginEnd="8dp"
+        android:layout_marginStart="8dp"
+        android:layout_marginTop="8dp"
+        android:background="#2429b4"
+        android:gravity="center"
+        android:text="the Rest of Budget\n"
+        android:textColor="#ffffff"
+        android:textSize="12sp"
+        android:textStyle=""
+        app:layout_constraintEnd_toStartOf="@+id/remainingForToday"
+        app:layout_constraintStart_toEndOf="@+id/incomeOfToday"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <TextView
+        android:id="@+id/remainingForToday"
+        android:layout_width="110dp"
+        android:layout_height="40dp"
+        android:layout_marginEnd="8dp"
+        android:layout_marginTop="8dp"
+        android:background="#2429b4"
+        android:gravity="center"
+        android:text="Today's Amount\n"
+        android:textColor="#ffffff"
+        android:textSize="12sp"
+        android:textStyle=""
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
 </android.support.constraint.ConstraintLayout>
