@@ -27,21 +27,6 @@ public class IncomeDetail extends AppCompatActivity {
                         .setAction("Action", null).show();
             }
         });
-
-        FileApp app = (FileApp)this.getApplication();
-        String fileName = FileApp.makeFileName();
-        ArrayList list = new ArrayList();
-        list = app.readTerm(FileApp.IN, fileName);
-        int total = 0;
-        for (int i = 0; i < list.size(); i++) {
-            FileApp.Term t = (FileApp.Term)list.get(i);
-            total += t.amount;
-        }
-
-        TextView t1 = (TextView)findViewById(R.id.incomeOfToday);
-        t1.setText("Today's Income\n" +  FileApp.int2String(total));
-
-        getSupportActionBar().setDisplayHomeAsUpEnabled(true);
     }
 
 }

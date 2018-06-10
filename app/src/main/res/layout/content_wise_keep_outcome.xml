@@ -9,9 +9,9 @@
     tools:showIn="@layout/app_bar_wise_keep">
 
     <TextView
-        android:id="@+id/outcomeOfToday"
+        android:id="@+id/outcome"
         android:layout_width="110dp"
-        android:layout_height="60dp"
+        android:layout_height="32dp"
         android:layout_marginStart="8dp"
         android:layout_marginTop="8dp"
         android:background="#2429b4"
@@ -26,7 +26,7 @@
     <TextView
         android:id="@+id/remaining"
         android:layout_width="110dp"
-        android:layout_height="60dp"
+        android:layout_height="32dp"
         android:layout_marginEnd="8dp"
         android:layout_marginStart="8dp"
         android:layout_marginTop="8dp"
@@ -36,14 +36,14 @@
         android:textColor="#ffffff"
         android:textSize="12sp"
         android:textStyle=""
-        app:layout_constraintEnd_toStartOf="@+id/remainingForToday"
-        app:layout_constraintStart_toEndOf="@+id/outcomeOfToday"
+        app:layout_constraintEnd_toStartOf="@+id/rest"
+        app:layout_constraintStart_toEndOf="@+id/outcome"
         app:layout_constraintTop_toTopOf="parent" />
 
     <TextView
-        android:id="@+id/remainingForToday"
+        android:id="@+id/rest"
         android:layout_width="110dp"
-        android:layout_height="60dp"
+        android:layout_height="32dp"
         android:layout_marginEnd="8dp"
         android:layout_marginTop="8dp"
         android:background="#2429b4"
@@ -56,16 +56,82 @@
         app:layout_constraintTop_toTopOf="parent" />
 
     <EditText
-        android:id="@+id/editText"
+        android:id="@+id/abstractOfOut"
         android:layout_width="350dp"
         android:layout_height="150dp"
         android:layout_marginEnd="8dp"
         android:layout_marginStart="8dp"
-        android:layout_marginTop="76dp"
+        android:layout_marginTop="96dp"
         android:ems="10"
         android:inputType="textMultiLine"
+        android:text="Biggest Outcome Today"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
+
+    <TextView
+        android:id="@+id/displayOfOutcome"
+        android:layout_width="110dp"
+        android:layout_height="45dp"
+        android:layout_marginStart="8dp"
+        android:text="TextView"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/outcome" />
+
+    <TextView
+        android:id="@+id/displayOfRestBudget"
+        android:layout_width="110dp"
+        android:layout_height="45dp"
+        android:layout_marginEnd="8dp"
+        android:layout_marginStart="8dp"
+        android:text="TextView"
+        app:layout_constraintEnd_toStartOf="@+id/DisplayOfAvgBudget"
+        app:layout_constraintStart_toEndOf="@+id/displayOfOutcome"
+        app:layout_constraintTop_toBottomOf="@+id/remaining" />
+
+    <Button
+        android:id="@+id/forOutDetailT"
+        android:layout_width="350dp"
+        android:layout_height="wrap_content"
+        android:layout_marginEnd="8dp"
+        android:layout_marginStart="8dp"
+        android:layout_marginTop="8dp"
+        android:text="For more details of Outcome"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/abstractOfOut" />
+
+    <Button
+        android:id="@+id/AddNewOutcome"
+        android:layout_width="350dp"
+        android:layout_height="wrap_content"
+        android:layout_marginEnd="8dp"
+        android:layout_marginStart="8dp"
+        android:layout_marginTop="8dp"
+        android:text="Add a new outcome"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/forOutDetailT" />
+
+    <TextView
+        android:id="@+id/DisplayOfAvgBudget"
+        android:layout_width="110dp"
+        android:layout_height="45dp"
+        android:layout_marginEnd="8dp"
+        android:text="TextView"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/rest" />
+
+    <Button
+        android:id="@+id/forOutDetail"
+        android:layout_width="350dp"
+        android:layout_height="wrap_content"
+        android:layout_marginEnd="8dp"
+        android:layout_marginStart="8dp"
+        android:layout_marginTop="8dp"
+        android:text="For details of another day"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/AddNewOutcome" />
 
 </android.support.constraint.ConstraintLayout>

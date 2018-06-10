@@ -9,15 +9,15 @@
     tools:showIn="@layout/app_bar_wise_keep">
 
     <TextView
-        android:id="@+id/incomeOfToday"
+        android:id="@+id/income"
         android:layout_width="160dp"
-        android:layout_height="60dp"
+        android:layout_height="32dp"
         android:layout_marginEnd="8dp"
         android:layout_marginStart="8dp"
         android:layout_marginTop="8dp"
         android:background="#2429b4"
         android:gravity="top|center"
-        android:text="Today's Income\n"
+        android:text="Income"
         android:textColor="#ffffff"
         android:textSize="12sp"
         android:textStyle=""
@@ -26,9 +26,9 @@
         app:layout_constraintTop_toTopOf="parent" />
 
     <TextView
-        android:id="@+id/restOfBudget"
+        android:id="@+id/budget"
         android:layout_width="160dp"
-        android:layout_height="60dp"
+        android:layout_height="32dp"
         android:layout_marginEnd="8dp"
         android:layout_marginStart="8dp"
         android:layout_marginTop="8dp"
@@ -50,16 +50,75 @@
         app:layout_constraintGuide_end="194dp" />
 
     <EditText
-        android:id="@+id/editText"
+        android:id="@+id/abstractOfIn"
         android:layout_width="350dp"
         android:layout_height="150dp"
         android:layout_marginEnd="8dp"
         android:layout_marginStart="8dp"
-        android:layout_marginTop="76dp"
+        android:layout_marginTop="96dp"
         android:ems="10"
         android:inputType="textMultiLine"
+        android:text="Biggest Income Today"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
+
+    <TextView
+        android:id="@+id/displayOfIn"
+        android:layout_width="160dp"
+        android:layout_height="45dp"
+        android:layout_marginEnd="8dp"
+        android:layout_marginStart="8dp"
+        android:text="TextView"
+        app:layout_constraintEnd_toStartOf="@+id/guideline"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/income" />
+
+    <TextView
+        android:id="@+id/displayOfBudget"
+        android:layout_width="160dp"
+        android:layout_height="45dp"
+        android:layout_marginEnd="8dp"
+        android:layout_marginStart="8dp"
+        android:text="TextView"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="@+id/guideline"
+        app:layout_constraintTop_toBottomOf="@+id/budget" />
+
+    <Button
+        android:id="@+id/forInDetailT"
+        android:layout_width="350dp"
+        android:layout_height="wrap_content"
+        android:layout_marginEnd="8dp"
+        android:layout_marginStart="8dp"
+        android:layout_marginTop="8dp"
+        android:text="For more details of Income"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/abstractOfIn" />
+
+    <Button
+        android:id="@+id/AddNewIncome"
+        android:layout_width="350dp"
+        android:layout_height="wrap_content"
+        android:layout_marginEnd="8dp"
+        android:layout_marginStart="8dp"
+        android:layout_marginTop="8dp"
+        android:text="Add a new income"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/forInDetailT" />
+
+    <Button
+        android:id="@+id/forDetail"
+        android:layout_width="350dp"
+        android:layout_height="wrap_content"
+        android:layout_marginEnd="8dp"
+        android:layout_marginStart="8dp"
+        android:layout_marginTop="8dp"
+        android:text="For details of another day"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/AddNewIncome" />
 
 </android.support.constraint.ConstraintLayout>
