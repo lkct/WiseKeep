@@ -8,4 +8,69 @@
     tools:context=".NewOutcome"
     tools:showIn="@layout/activity_new_outcome">
 
+    <EditText
+        android:id="@+id/amount_newout"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginEnd="8dp"
+        android:layout_marginStart="8dp"
+        android:layout_marginTop="16dp"
+        android:ems="4"
+        android:gravity="right"
+        android:hint="金额"
+        android:inputType="numberDecimal"
+        android:textSize="30sp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="8dp"
+        android:layout_marginEnd="8dp"
+        android:layout_marginTop="8dp"
+        android:text="￥"
+        android:textSize="30sp"
+        app:layout_constraintBottom_toBottomOf="@+id/amount_newout"
+        app:layout_constraintEnd_toStartOf="@+id/amount_newout"
+        app:layout_constraintTop_toTopOf="@+id/amount_newout" />
+
+    <ToggleButton
+        android:id="@+id/toggleButton"
+        android:layout_width="105dp"
+        android:layout_height="129dp"
+        android:button="@android:drawable/ic_menu_slideshow"
+        android:textOff="btn"
+        android:textOn="btn"
+        tools:layout_editor_absoluteX="60dp"
+        tools:layout_editor_absoluteY="112dp" />
+
+    <EditText
+        android:id="@+id/desc_newout"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginEnd="8dp"
+        android:layout_marginStart="8dp"
+        android:layout_marginTop="16dp"
+        android:ems="16"
+        android:inputType="textMultiLine"
+        android:maxLines="4"
+        app:layout_constrainedWidth="true"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/textView_desc_newout" />
+
+    <TextView
+        android:id="@+id/textView_desc_newout"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="16dp"
+        android:layout_marginTop="300dp"
+        android:text="描述"
+        android:textColor="@android:color/black"
+        android:textSize="30sp"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
 </android.support.constraint.ConstraintLayout>
