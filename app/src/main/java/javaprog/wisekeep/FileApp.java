@@ -33,6 +33,10 @@ public class FileApp extends Application {
     public void onCreate() {
         super.onCreate();
         // other init
+        Calendar calendar = Calendar.getInstance();
+        year = calendar.get(Calendar.YEAR);
+        month = calendar.get(Calendar.MONTH) + 1;
+        day = calendar.get(Calendar.DAY_OF_MONTH);
         readSet();
     }
 
