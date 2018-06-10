@@ -21,6 +21,8 @@ public class FileApp extends Application {
     public static int budgetPerMonth;
     public static int goalPerMonth;
 
+    public static int year, month, day;
+
     public class Term {
         public int amount;
         public int type;
@@ -35,9 +37,9 @@ public class FileApp extends Application {
     }
 
     // global methods
-    public void saveTerm(String i_o, String fileName, ArrayList list) {
+    public void saveTerm(String i_o, ArrayList list) {
         try {
-            FileOutputStream outputFile = openFileOutput(i_o + fileName, MODE_PRIVATE);
+            FileOutputStream outputFile = openFileOutput(i_o + makeFileName(), MODE_PRIVATE);
             DataOutputStream output = new DataOutputStream(outputFile);
             output.writeInt(list.size());
             for (int i = 0; i < list.size(); i++) {
@@ -57,9 +59,9 @@ public class FileApp extends Application {
         }
     }
 
-    public ArrayList readTerm(String i_o, String fileName) {
+    public ArrayList readTerm(String i_o) {
         try {
-            FileInputStream inputFile = openFileInput(i_o + fileName);
+            FileInputStream inputFile = openFileInput(i_o + makeFileName());
             DataInputStream input = new DataInputStream(inputFile);
             ArrayList list = new ArrayList();
             int size = input.readInt();
@@ -124,36 +126,7 @@ public class FileApp extends Application {
     }
 
     public static String makeFileName() {
-        Calendar c = Calendar.getInstance();
-        int YEAR  = c.get(Calendar.YEAR);
-        int MONTH = c.get(Calendar.MONTH);
-        int DAY = c.get(Calendar.DAY_OF_MONTH);
-        int DATE = 10000 * YEAR + 100 * MONTH + DAY;
-        StringBuffer NAME = new StringBuffer();
-        for (int i = 0; i < 8; i++) {
-            int tmp = DATE % 10;
-            NAME.append(tmp+'0');
-            DATE /= 10;
-        }
-        String name = new String(NAME.reverse());
-        return name;
-    }
-
-    public static String int2String(int x) {
-        StringBuffer s = new StringBuffer();
-        for (int i = 0; i < 2; i++) {
-            int tmp = x % 10;
-            s.append(tmp + '0');
-            x /= 10;
-        }
-        s.append('.');
-        while (x != 0) {
-            int tmp = x % 10;
-            s.append(tmp + '0');
-            x /= 10;
-        }
-        String r = new String(s.reverse());
-        return r;
+        return String.format("%04d%02d%02d", year, month, day);
     }
 
 }

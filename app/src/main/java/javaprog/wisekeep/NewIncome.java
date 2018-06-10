@@ -32,36 +32,33 @@ public class NewIncome extends AppCompatActivity {
 
     public void addNewIncome() {
         FileApp app = (FileApp)this.getApplication();
-        String fileName = FileApp.makeFileName();
         ArrayList list = new ArrayList();
-        list = app.readTerm(FileApp.IN, fileName);
+        list = app.readTerm(FileApp.IN);
 
         FileApp.Term t = app.new Term();
         list.add(t);
 
-        app.saveTerm(FileApp.IN, fileName, list);
+        app.saveTerm(FileApp.IN, list);
     }
 
     public void editOldIncome() {
         FileApp app = (FileApp)this.getApplication();
-        String fileName = FileApp.makeFileName();
         ArrayList list = new ArrayList();
-        list = app.readTerm(FileApp.IN, fileName);
+        list = app.readTerm(FileApp.IN);
 
 
 
-        app.saveTerm(FileApp.IN, fileName, list);
+        app.saveTerm(FileApp.IN, list);
     }
 
     public void deleteOldIncome() {
         FileApp app = (FileApp)this.getApplication();
-        String fileName = FileApp.makeFileName();
         ArrayList list = new ArrayList();
-        list = app.readTerm(FileApp.IN, fileName);
+        list = app.readTerm(FileApp.IN);
 
 
 
-        app.saveTerm(FileApp.IN, fileName, list);
+        app.saveTerm(FileApp.IN, list);
     }
 
 }

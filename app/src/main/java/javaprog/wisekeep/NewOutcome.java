@@ -17,7 +17,7 @@ public class NewOutcome extends AppCompatActivity {
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
 
-        FloatingActionButton fab = (FloatingActionButton) findViewById(R.id.fab);
+        FloatingActionButton fab = (FloatingActionButton) findViewById(R.id.fab_newout);
         fab.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -30,35 +30,32 @@ public class NewOutcome extends AppCompatActivity {
 
     public void addNewOutcome() {
         FileApp app = (FileApp)this.getApplication();
-        String fileName = FileApp.makeFileName();
         ArrayList list = new ArrayList();
-        list = app.readTerm(FileApp.OUT, fileName);
+        list = app.readTerm(FileApp.OUT);
 
 
 
-        app.saveTerm(FileApp.OUT, fileName, list);
+        app.saveTerm(FileApp.OUT, list);
     }
 
     public void editOldOutcome() {
         FileApp app = (FileApp)this.getApplication();
-        String fileName = FileApp.makeFileName();
         ArrayList list = new ArrayList();
-        list = app.readTerm(FileApp.OUT, fileName);
+        list = app.readTerm(FileApp.OUT);
 
 
 
-        app.saveTerm(FileApp.OUT, fileName, list);
+        app.saveTerm(FileApp.OUT, list);
     }
 
     public void deleteOldOutcome() {
         FileApp app = (FileApp)this.getApplication();
-        String fileName = FileApp.makeFileName();
         ArrayList list = new ArrayList();
-        list = app.readTerm(FileApp.OUT, fileName);
+        list = app.readTerm(FileApp.OUT);
 
 
 
-        app.saveTerm(FileApp.OUT, fileName, list);
+        app.saveTerm(FileApp.OUT, list);
     }
 
 }
