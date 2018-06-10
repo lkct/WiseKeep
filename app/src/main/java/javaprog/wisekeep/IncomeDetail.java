@@ -28,5 +28,4 @@ public class IncomeDetail extends AppCompatActivity {
             }
         });
     }
-
 }
