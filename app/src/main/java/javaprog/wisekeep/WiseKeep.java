@@ -17,6 +17,9 @@ import android.view.MenuItem;
 public class WiseKeep extends AppCompatActivity
         implements NavigationView.OnNavigationItemSelectedListener {
 
+    public FileApp app = (FileApp) this.getApplication();
+    public String curIO = FileApp.OUT;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -41,6 +44,8 @@ public class WiseKeep extends AppCompatActivity
 
         NavigationView navigationView = (NavigationView) findViewById(R.id.nav_view);
         navigationView.setNavigationItemSelectedListener(this);
+
+
     }
 
     @Override
@@ -71,6 +76,13 @@ public class WiseKeep extends AppCompatActivity
         if (id == R.id.action_date) {
             return true;
         } else if (id == R.id.action_add) {
+            if (curIO == FileApp.OUT) {
+                Intent intent = new Intent(WiseKeep.this, NewOutcome.class);
+                startActivity(intent);
+            } else {
+                Intent intent = new Intent(WiseKeep.this, NewIncome.class);
+                startActivity(intent);
+            }
             return true;
         }
         return super.onOptionsItemSelected(item);
@@ -85,9 +97,11 @@ public class WiseKeep extends AppCompatActivity
         if (id == R.id.nav_outcome) {
             findViewById(R.id.include_in).setVisibility(View.INVISIBLE);
             findViewById(R.id.include_out).setVisibility(View.VISIBLE);
+            curIO = FileApp.OUT;
         } else if (id == R.id.nav_income) {
             findViewById(R.id.include_in).setVisibility(View.VISIBLE);
             findViewById(R.id.include_out).setVisibility(View.INVISIBLE);
+            curIO = FileApp.IN;
         } else if (id == R.id.nav_summary) {
             Intent intent = new Intent(WiseKeep.this, Summary.class);
             startActivity(intent);
