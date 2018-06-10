@@ -1,6 +1,10 @@
 <?xml version="1.0" encoding="utf-8"?>
 <menu xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:app="http://schemas.android.com/apk/res-auto">
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/wise_keep"
+    android:orientation="vertical"
+    tools:context="com.lindroid.datetimepickerdemo.MainActivity">
     <item
         android:id="@+id/action_date"
         android:icon="@drawable/ic_menu_date"

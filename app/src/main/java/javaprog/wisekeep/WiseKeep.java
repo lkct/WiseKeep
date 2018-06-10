@@ -4,6 +4,7 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.support.design.widget.FloatingActionButton;
 import android.support.design.widget.Snackbar;
+import android.support.v7.app.AlertDialog;
 import android.view.View;
 import android.support.design.widget.NavigationView;
 import android.support.v4.view.GravityCompat;
@@ -13,17 +14,34 @@ import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
 import android.view.Menu;
 import android.view.MenuItem;
+import android.widget.DatePicker;
+import android.content.Context;
+import android.content.DialogInterface;
+import android.os.Bundle;
+import android.support.v7.app.AppCompatActivity;
+import android.view.View;
+import android.widget.DatePicker;
+import android.widget.LinearLayout;
+import android.widget.TextView;
+import android.widget.TimePicker;
+
+
+import java.util.Calendar;
 
 public class WiseKeep extends AppCompatActivity
-        implements NavigationView.OnNavigationItemSelectedListener {
+        implements NavigationView.OnNavigationItemSelectedListener,DatePicker.OnDateChangedListener {
 
     public FileApp app = (FileApp) this.getApplication();
     public String curIO = FileApp.OUT;
+    private Context context;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_wise_keep);
+        context = this;
+
+        initDateTime();
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
 
@@ -48,6 +66,14 @@ public class WiseKeep extends AppCompatActivity
 
     }
 
+    private void initDateTime(){
+        Calendar calendar = Calendar.getInstance();
+        app.year = calendar.get(Calendar.YEAR);
+        app.month = calendar.get(Calendar.MONTH);
+        app.day = calendar.get(Calendar.DAY_OF_MONTH);
+    }
+
+
     @Override
     public void onBackPressed() {
         DrawerLayout drawer = (DrawerLayout) findViewById(R.id.drawer_layout);
@@ -64,7 +90,6 @@ public class WiseKeep extends AppCompatActivity
         getMenuInflater().inflate(R.menu.wise_keep, menu);
         return true;
     }
-
     @Override
     public boolean onOptionsItemSelected(MenuItem item) {
         // Handle action bar item clicks here. The action bar will
@@ -74,6 +99,22 @@ public class WiseKeep extends AppCompatActivity
 
         //noinspection SimplifiableIfStatement
         if (id == R.id.action_date) {
+            AlertDialog.Builder builder = new AlertDialog.Builder(context);
+            builder.setPositiveButton("确定", new DialogInterface.OnClickListener() {
+                @Override
+                public void onClick(DialogInterface dialog, int which) {
+                    // TODO: 刷新条目列表
+                    dialog.dismiss();
+                }
+            });
+
+            final AlertDialog dialog = builder.create();
+            View dialogView = View.inflate(context, R.layout.dialog_data, null);
+            final DatePicker datePicker = (DatePicker) dialogView.findViewById(R.id.datePicker);
+            dialog.setTitle("设置日期");
+            dialog.setView(dialogView);
+            dialog.show();
+            datePicker.init(app.year,app.month,app.day,this);
             return true;
         } else if (id == R.id.action_add) {
             if (curIO == FileApp.OUT) {
@@ -113,5 +154,12 @@ public class WiseKeep extends AppCompatActivity
         DrawerLayout drawer = (DrawerLayout) findViewById(R.id.drawer_layout);
         drawer.closeDrawer(GravityCompat.START);
         return false;
+    }
+
+
+    public void onDateChanged(DatePicker view, int year, int month , int day){
+        app.year = year;
+        app.month = month;
+        app.day = day;
     }
 }
