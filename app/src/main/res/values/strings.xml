@@ -27,4 +27,8 @@
     <string name="type2_in">补助</string>
     <string name="type3_in">投资</string>
     <string name="type4_in">其它</string>
+    <string name="positive_btn">确定</string>
+    <string name="negative_btn">取消</string>
+    <string name="dltDecision">确定删除吗？</string>
+    <string name="edtDecision">确定修改吗？</string>
 </resources>
