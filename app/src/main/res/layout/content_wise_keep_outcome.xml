@@ -55,20 +55,6 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintTop_toTopOf="@+id/guideline2" />
 
-    <EditText
-        android:id="@+id/abstractOfOut"
-        android:layout_width="350dp"
-        android:layout_height="150dp"
-        android:layout_marginEnd="8dp"
-        android:layout_marginStart="8dp"
-        android:layout_marginTop="8dp"
-        android:ems="10"
-        android:inputType="textMultiLine"
-        android:text="Biggest Outcome Today"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="@+id/guideline5" />
-
     <TextView
         android:id="@+id/displayOfOut"
         android:layout_width="110dp"
@@ -92,18 +78,6 @@
         app:layout_constraintEnd_toStartOf="@+id/DisplayOfAvgBudget"
         app:layout_constraintStart_toEndOf="@+id/displayOfOut"
         app:layout_constraintTop_toBottomOf="@+id/remaining" />
-
-    <Button
-        android:id="@+id/forOutDetailT"
-        android:layout_width="350dp"
-        android:layout_height="wrap_content"
-        android:layout_marginEnd="8dp"
-        android:layout_marginStart="8dp"
-        android:layout_marginTop="8dp"
-        android:text="For more details of Outcome"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/abstractOfOut" />
 
     <TextView
         android:id="@+id/DisplayOfAvgBudget"

@@ -34,7 +34,7 @@ public class IncomeDetail extends AppCompatActivity {
         dlt.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                AlertDialog.Builder alertDialogBuilder = new AlertDialog.Builder(this);
+                AlertDialog.Builder alertDialogBuilder = new AlertDialog.Builder();
                 alertDialogBuilder.setCancelable(true);
                 alertDialogBuilder.setMessage(R.string.dltDecision);
                 alertDialogBuilder.setPositiveButton(R.string.positive_btn,
@@ -42,9 +42,10 @@ public class IncomeDetail extends AppCompatActivity {
 
                             @Override
                             public void onClick(DialogInterface arg0, int arg1) {
-                                //FileApp.inDateList.remove();
-                                Intent positveActivity = new Intent(getApplicationContext(),WiseKeep.class);
-                                startActivity(positveActivity);
+                                FileApp.inList.remove(FileApp.curDetail);
+                                FileApp.curDetail = -1;
+                                // TODO:refresh the act...
+                                IncomeDetail.this.onBackPressed();
                             }
                         });
                 alertDialogBuilder.setNegativeButton(R.string.negative_btn,

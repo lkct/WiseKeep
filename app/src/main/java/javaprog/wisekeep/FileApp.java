@@ -46,6 +46,8 @@ public class FileApp extends Application {
     public static ArrayList inList;
     public static ArrayList outList;
 
+    public static int curDetail = -1;
+
     @Override
     public void onCreate() {
         super.onCreate();
