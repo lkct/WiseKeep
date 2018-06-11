@@ -89,30 +89,6 @@
         app:layout_constraintStart_toEndOf="@+id/displayOfOut"
         app:layout_constraintTop_toBottomOf="@+id/remaining" />
 
-    <Button
-        android:id="@+id/forOutDetailT"
-        android:layout_width="350dp"
-        android:layout_height="wrap_content"
-        android:layout_marginEnd="8dp"
-        android:layout_marginStart="8dp"
-        android:layout_marginTop="8dp"
-        android:text="For more details of Outcome"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/abstractOfOut" />
-
-    <Button
-        android:id="@+id/AddNewOutcome"
-        android:layout_width="350dp"
-        android:layout_height="wrap_content"
-        android:layout_marginEnd="8dp"
-        android:layout_marginStart="8dp"
-        android:layout_marginTop="8dp"
-        android:text="Add a new outcome"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/forOutDetailT" />
-
     <TextView
         android:id="@+id/DisplayOfAvgBudget"
         android:layout_width="110dp"
@@ -121,17 +97,5 @@
         android:text="TextView"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/rest" />
-
-    <Button
-        android:id="@+id/forOutDetail"
-        android:layout_width="350dp"
-        android:layout_height="wrap_content"
-        android:layout_marginEnd="8dp"
-        android:layout_marginStart="8dp"
-        android:layout_marginTop="8dp"
-        android:text="For details of another day"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/AddNewOutcome" />
 
 </android.support.constraint.ConstraintLayout>
