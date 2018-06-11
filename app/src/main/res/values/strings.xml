@@ -31,4 +31,5 @@
     <string name="negative_btn">取消</string>
     <string name="dltDecision">确定删除吗？</string>
     <string name="edtDecision">确定修改吗？</string>
+    <string name="yuan">￥</string>
 </resources>

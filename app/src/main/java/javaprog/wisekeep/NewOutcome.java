@@ -48,6 +48,7 @@ public class NewOutcome extends AppCompatActivity {
                 FileApp.outList.add(t);
                 app.saveTerm(FileApp.OUT);
                 Toast.makeText(NewOutcome.this, "保存成功", Toast.LENGTH_LONG).show();
+                // TODO: refresh
                 NewOutcome.this.onBackPressed();
             }
         });
