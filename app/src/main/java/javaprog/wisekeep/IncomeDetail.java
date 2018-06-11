@@ -34,7 +34,7 @@ public class IncomeDetail extends AppCompatActivity {
         dlt.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                AlertDialog.Builder alertDialogBuilder = new AlertDialog.Builder();
+                AlertDialog.Builder alertDialogBuilder = new AlertDialog.Builder(IncomeDetail.this);
                 alertDialogBuilder.setCancelable(true);
                 alertDialogBuilder.setMessage(R.string.dltDecision);
                 alertDialogBuilder.setPositiveButton(R.string.positive_btn,
