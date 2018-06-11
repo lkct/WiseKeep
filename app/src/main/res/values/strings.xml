@@ -16,4 +16,10 @@
     <string name="title_activity_income_detail">IncomeDetail</string>
     <string name="title_activity_outcome_detail">OutcomeDetail</string>
     <string name="author">Author 梁坤昌泰 严克强 李孝天</string>
+    <string name="type0_out">餐饮</string>
+    <string name="type1_out">交通</string>
+    <string name="type2_out">购物</string>
+    <string name="type3_out">娱乐</string>
+    <string name="type4_out">投资</string>
+    <string name="type5_out">其它</string>
 </resources>

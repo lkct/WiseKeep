@@ -37,14 +37,71 @@
         app:layout_constraintTop_toTopOf="@+id/amount_newout" />
 
     <ToggleButton
-        android:id="@+id/toggleButton"
-        android:layout_width="105dp"
-        android:layout_height="129dp"
-        android:button="@android:drawable/ic_menu_slideshow"
-        android:textOff="btn"
-        android:textOn="btn"
-        tools:layout_editor_absoluteX="60dp"
-        tools:layout_editor_absoluteY="112dp" />
+        android:id="@+id/type0_newout"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="16dp"
+        android:layout_marginTop="112dp"
+        android:drawableTop="@android:drawable/ic_menu_myplaces"
+        android:textOff="@string/type0_out"
+        android:textOn="@string/type0_out"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <ToggleButton
+        android:id="@+id/type1_newout"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="8dp"
+        android:drawableTop="@android:drawable/ic_menu_myplaces"
+        android:textOff="@string/type1_out"
+        android:textOn="@string/type1_out"
+        app:layout_constraintStart_toEndOf="@+id/type0_newout"
+        app:layout_constraintTop_toTopOf="@+id/type0_newout" />
+
+    <ToggleButton
+        android:id="@+id/type2_newout"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="8dp"
+        android:drawableTop="@android:drawable/ic_menu_myplaces"
+        android:textOff="@string/type2_out"
+        android:textOn="@string/type2_out"
+        app:layout_constraintStart_toEndOf="@+id/type1_newout"
+        app:layout_constraintTop_toTopOf="@+id/type1_newout" />
+
+    <ToggleButton
+        android:id="@+id/type3_newout"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="8dp"
+        android:drawableTop="@android:drawable/ic_menu_myplaces"
+        android:textOff="@string/type3_out"
+        android:textOn="@string/type3_out"
+        app:layout_constraintStart_toStartOf="@+id/type0_newout"
+        app:layout_constraintTop_toBottomOf="@+id/type0_newout" />
+
+    <ToggleButton
+        android:id="@+id/type4_newout"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="8dp"
+        android:drawableTop="@android:drawable/ic_menu_myplaces"
+        android:textOff="@string/type4_out"
+        android:textOn="@string/type4_out"
+        app:layout_constraintStart_toEndOf="@+id/type3_newout"
+        app:layout_constraintTop_toTopOf="@+id/type3_newout" />
+
+    <ToggleButton
+        android:id="@+id/type5_newout"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="8dp"
+        android:drawableTop="@android:drawable/ic_menu_myplaces"
+        android:textOff="@string/type5_out"
+        android:textOn="@string/type5_out"
+        app:layout_constraintStart_toEndOf="@+id/type4_newout"
+        app:layout_constraintTop_toTopOf="@+id/type4_newout" />
 
     <EditText
         android:id="@+id/desc_newout"
