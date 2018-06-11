@@ -15,6 +15,7 @@ import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.DatePicker;
+import android.widget.TextView;
 
 public class WiseKeep extends AppCompatActivity
         implements NavigationView.OnNavigationItemSelectedListener, DatePicker.OnDateChangedListener {
@@ -50,6 +51,10 @@ public class WiseKeep extends AppCompatActivity
 
         NavigationView navigationView = (NavigationView) findViewById(R.id.nav_view);
         navigationView.setNavigationItemSelectedListener(this);
+
+        TextView DI = (TextView) findViewById(R.id.dateIn);
+        TextView DO = (TextView) findViewById(R.id.dateOut);
+        String str = app.filename;
 
     }
 
