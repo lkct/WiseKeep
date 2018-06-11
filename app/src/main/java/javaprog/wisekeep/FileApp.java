@@ -51,7 +51,7 @@ public class FileApp extends Application {
     @Override
     public void onCreate() {
         super.onCreate();
-        // other init
+        // TODO: other init
         readSet();
         initDate();
         makeFileName();
@@ -59,7 +59,6 @@ public class FileApp extends Application {
         readTerm(IN);
     }
 
-    // global methods
     public void makeFileName() {
         filename = String.format("%04d%02d%02d", year, month, day);
     }
