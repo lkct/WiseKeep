@@ -12,14 +12,9 @@ import android.widget.EditText;
 import android.widget.Toast;
 import android.widget.ToggleButton;
 
-import java.util.Arrays;
-import java.util.List;
-
 public class NewOutcome extends AppCompatActivity {
 
     public FileApp app;
-    public static final List buttonIds = Arrays.asList(R.id.type0_newout, R.id.type1_newout, R.id.type2_newout,
-            R.id.type3_newout, R.id.type4_newout, R.id.type5_newout);
     public int curCheck = -1;
 
     @Override
@@ -95,8 +90,8 @@ public class NewOutcome extends AppCompatActivity {
 
         });
 
-        for (int i = 0; i < buttonIds.size(); i++) {
-            ((ToggleButton) findViewById((int) buttonIds.get(i))).setOnCheckedChangeListener(OnChecked);
+        for (int i = 0; i < FileApp.outBtnId.size(); i++) {
+            ((ToggleButton) findViewById((int) FileApp.outBtnId.get(i))).setOnCheckedChangeListener(OnChecked);
         }
     }
 
@@ -106,14 +101,14 @@ public class NewOutcome extends AppCompatActivity {
             int thisId = buttonView.getId();
             if (isChecked) {
                 // The toggle is enabled
-                curCheck = buttonIds.indexOf(thisId);
-                for (int i = 0; i < buttonIds.size(); i++) {
+                curCheck = FileApp.outBtnId.indexOf(thisId);
+                for (int i = 0; i < FileApp.outBtnId.size(); i++) {
                     if (curCheck != i) {
-                        ((ToggleButton) findViewById((int) buttonIds.get(i))).setChecked(false);
+                        ((ToggleButton) findViewById((int) FileApp.outBtnId.get(i))).setChecked(false);
                     }
                 }
             } else {
-                if ((int) buttonIds.get(curCheck) == thisId) {
+                if ((int) FileApp.outBtnId.get(curCheck) == thisId) {
                     buttonView.setChecked(true);
                 }
             }

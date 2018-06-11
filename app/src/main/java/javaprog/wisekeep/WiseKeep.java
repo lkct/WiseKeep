@@ -21,13 +21,11 @@ public class WiseKeep extends AppCompatActivity
 
     public FileApp app;
     public String curIO = FileApp.OUT;
-    private Context context;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_wise_keep);
-        context = this;
         app = (FileApp) this.getApplication();
 
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
@@ -79,7 +77,7 @@ public class WiseKeep extends AppCompatActivity
 
         //noinspection SimplifiableIfStatement
         if (id == R.id.action_date) {
-            AlertDialog.Builder builder = new AlertDialog.Builder(context);
+            AlertDialog.Builder builder = new AlertDialog.Builder(WiseKeep.this);
             builder.setPositiveButton("确定", new DialogInterface.OnClickListener() {
                 @Override
                 public void onClick(DialogInterface dialog, int which) {
@@ -91,7 +89,7 @@ public class WiseKeep extends AppCompatActivity
             });
 
             final AlertDialog dialog = builder.create();
-            View dialogView = View.inflate(context, R.layout.dialog_data, null);
+            View dialogView = View.inflate(WiseKeep.this, R.layout.dialog_data, null);
             final DatePicker datePicker = (DatePicker) dialogView.findViewById(R.id.datePicker);
             dialog.setTitle("设置日期");
             dialog.setView(dialogView);
@@ -141,6 +139,6 @@ public class WiseKeep extends AppCompatActivity
         FileApp.year = year;
         FileApp.month = month;
         FileApp.day = day;
-        FileApp.makeFileName();
+        app.makeFileName();
     }
 }
