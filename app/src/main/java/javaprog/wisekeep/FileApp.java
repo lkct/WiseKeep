@@ -9,7 +9,9 @@ import java.io.FileOutputStream;
 import java.io.FileNotFoundException;
 import java.io.IOException;
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.Calendar;
+import java.util.List;
 
 public class FileApp extends Application {
 
@@ -17,13 +19,23 @@ public class FileApp extends Application {
     public static final String OUT = "out";
     public static final String IN = "in";
 
+    public static final List outBtnId = Arrays.asList(R.id.type0_newout, R.id.type1_newout, R.id.type2_newout,
+            R.id.type3_newout, R.id.type4_newout, R.id.type5_newout);
+    public static final List inBtnId = Arrays.asList(R.id.type0_newin, R.id.type1_newin, R.id.type2_newin,
+            R.id.type3_newin, R.id.type4_newin);
+    public static List outTypeStrId = Arrays.asList(R.string.type0_out, R.string.type1_out, R.string.type2_out,
+            R.string.type3_out, R.string.type4_out, R.string.type5_out);
+    public static List inTypeStrId = Arrays.asList(R.string.type0_in, R.string.type1_in, R.string.type2_in,
+            R.string.type3_in, R.string.type4_in);
+
     public static int startingDate;
     public static int budgetPerMonth;
     public static int goalPerMonth;
 
     public static int year, month, day;
     public static String filename;
-    public static ArrayList dateList;
+    public static ArrayList outDateList;
+    public static ArrayList inDateList;
 
     public static class Term {
         public double amount;
@@ -39,16 +51,31 @@ public class FileApp extends Application {
         super.onCreate();
         // other init
         readSet();
-        Calendar calendar = Calendar.getInstance();
-        year = calendar.get(Calendar.YEAR);
-        month = calendar.get(Calendar.MONTH) + 1;
-        day = calendar.get(Calendar.DAY_OF_MONTH);
+        initDate();
         makeFileName();
         readTerm(OUT);
         readTerm(IN);
     }
 
     // global methods
+    public void makeFileName() {
+        filename = String.format("%04d%02d%02d", year, month, day);
+    }
+
+    public void initDate() {
+        Calendar calendar = Calendar.getInstance();
+        year = calendar.get(Calendar.YEAR);
+        month = calendar.get(Calendar.MONTH) + 1;
+        day = calendar.get(Calendar.DAY_OF_MONTH);
+    }
+
+    public void initSet() {
+        startingDate = 1;
+        budgetPerMonth = 0;
+        goalPerMonth = 0;
+        saveSet();
+    }
+
     public void saveTerm(String i_o) {
         ArrayList list;
         if (i_o.equals(OUT)) {
@@ -57,9 +84,8 @@ public class FileApp extends Application {
             list = inList;
         }
         try {
-            String fn = i_o + filename;
-            FileOutputStream outputFile = openFileOutput(fn, MODE_PRIVATE);
-            // TODO: dateList, fn
+            FileOutputStream outputFile = openFileOutput(i_o + filename, MODE_PRIVATE);
+            // TODO: dateList
             DataOutputStream output = new DataOutputStream(outputFile);
             output.writeInt(list.size());
             for (int i = 0; i < list.size(); i++) {
@@ -129,13 +155,6 @@ public class FileApp extends Application {
         }
     }
 
-    public void initSet() {
-        startingDate = 1;
-        budgetPerMonth = 0;
-        goalPerMonth = 0;
-        saveSet();
-    }
-
     public void readSet() {
         try {
             FileInputStream inputFile = openFileInput("settings");
@@ -150,10 +169,6 @@ public class FileApp extends Application {
         } catch (IOException e) {
             e.printStackTrace();
         }
-    }
-
-    public static void makeFileName() {
-        filename = String.format("%04d%02d%02d", year, month, day);
     }
 
 }
