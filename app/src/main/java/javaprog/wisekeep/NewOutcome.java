@@ -18,6 +18,7 @@ import java.util.List;
 
 public class NewOutcome extends AppCompatActivity {
 
+    public FileApp app = (FileApp) this.getApplication();
     public static final List buttonIds = Arrays.asList(R.id.type0_newout, R.id.type1_newout, R.id.type2_newout,
             R.id.type3_newout, R.id.type4_newout, R.id.type5_newout);
     public int curCheck = -1;
@@ -34,13 +35,22 @@ public class NewOutcome extends AppCompatActivity {
             @Override
             public void onClick(View view) {
                 String amt = ((EditText) findViewById(R.id.amount_newout)).getText().toString();
-                if (amt.equals("")){
+                if (amt.equals("")) {
                     Toast.makeText(NewOutcome.this, "请输入金额", Toast.LENGTH_LONG).show();
                     return;
                 }
                 double amount = Double.valueOf(amt);
+                if (curCheck == -1) {
+                    Toast.makeText(NewOutcome.this, "请选择类别", Toast.LENGTH_LONG).show();
+                    return;
+                }
                 String desc = ((EditText) findViewById(R.id.desc_newout)).getText().toString();
-
+                FileApp.Term t = new FileApp.Term();
+                t.amount = amount;
+                t.type = curCheck;
+                t.description = desc;
+                FileApp.outList.add(t);
+                app.saveTerm(FileApp.OUT);
             }
         });
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);

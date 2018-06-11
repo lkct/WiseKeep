@@ -23,7 +23,7 @@ public class FileApp extends Application {
 
     public static int year, month, day;
 
-    public class Term {
+    public static class Term {
         public double amount;
         public int type;
         public String description;
