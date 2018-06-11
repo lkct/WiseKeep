@@ -8,95 +8,13 @@
     tools:context=".WiseKeep"
     tools:showIn="@layout/app_bar_wise_keep">
 
-    <TextView
-        android:id="@+id/outcome"
-        android:layout_width="110dp"
-        android:layout_height="32dp"
-        android:layout_marginStart="8dp"
-        android:layout_marginTop="8dp"
-        android:background="#2429b4"
-        android:gravity="top|center"
-        android:text="Today's Outcome\n"
-        android:textColor="#ffffff"
-        android:textSize="12sp"
-        android:textStyle=""
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="@+id/guideline2" />
-
-    <TextView
-        android:id="@+id/remaining"
-        android:layout_width="110dp"
-        android:layout_height="32dp"
-        android:layout_marginEnd="8dp"
-        android:layout_marginStart="8dp"
-        android:layout_marginTop="8dp"
-        android:background="#2429b4"
-        android:gravity="top|center"
-        android:text="the Rest of Budget\n"
-        android:textColor="#ffffff"
-        android:textSize="12sp"
-        android:textStyle=""
-        app:layout_constraintEnd_toStartOf="@+id/rest"
-        app:layout_constraintStart_toEndOf="@+id/outcome"
-        app:layout_constraintTop_toTopOf="@+id/guideline2" />
-
-    <TextView
-        android:id="@+id/rest"
-        android:layout_width="110dp"
-        android:layout_height="32dp"
-        android:layout_marginEnd="8dp"
-        android:layout_marginTop="8dp"
-        android:background="#2429b4"
-        android:gravity="top|center"
-        android:text="Today's Amount\n"
-        android:textColor="#ffffff"
-        android:textSize="12sp"
-        android:textStyle=""
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintTop_toTopOf="@+id/guideline2" />
-
-    <TextView
-        android:id="@+id/displayOfOut"
-        android:layout_width="110dp"
-        android:layout_height="45dp"
-        android:layout_marginStart="8dp"
-        android:background="#2429b4"
-        android:text="TextView"
-        android:textColor="#ffffff"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/outcome" />
-
-    <TextView
-        android:id="@+id/displayOfRestBudget"
-        android:layout_width="110dp"
-        android:layout_height="45dp"
-        android:layout_marginEnd="8dp"
-        android:layout_marginStart="8dp"
-        android:background="#2429b4"
-        android:text="TextView"
-        android:textColor="#ffffff"
-        app:layout_constraintEnd_toStartOf="@+id/DisplayOfAvgBudget"
-        app:layout_constraintStart_toEndOf="@+id/displayOfOut"
-        app:layout_constraintTop_toBottomOf="@+id/remaining" />
-
-    <TextView
-        android:id="@+id/DisplayOfAvgBudget"
-        android:layout_width="110dp"
-        android:layout_height="45dp"
-        android:layout_marginEnd="8dp"
-        android:background="#2429b4"
-        android:text="TextView"
-        android:textColor="#ffffff"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/rest" />
-
     <android.support.constraint.Guideline
         android:id="@+id/guideline2"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="48dp"
         android:orientation="horizontal"
-        app:layout_constraintGuide_begin="48dp"
+        app:layout_constraintGuide_begin="72dp"
         app:layout_constraintTop_toTopOf="parent" />
 
     <android.support.constraint.Guideline
@@ -111,22 +29,37 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:orientation="vertical"
-        app:layout_constraintGuide_percent="0.5" />
+        app:layout_constraintGuide_end="192dp" />
 
     <TextView
         android:id="@+id/dateOut"
-        android:layout_width="160dp"
-        android:layout_height="32dp"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
         android:layout_marginBottom="8dp"
         android:layout_marginEnd="8dp"
         android:layout_marginStart="8dp"
         android:layout_marginTop="8dp"
         android:background="#2429b4"
         android:text="TextView"
+        android:textSize="30sp"
         android:textColor="#ffffff"
         app:layout_constraintBottom_toTopOf="@+id/guideline2"
         app:layout_constraintEnd_toStartOf="@+id/guideline6"
         app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <TextView
+        android:id="@+id/outYuan1"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="8dp"
+        android:layout_marginStart="8dp"
+        android:layout_marginTop="8dp"
+        android:text="@string/yuan"
+        android:textSize="30sp"
+        app:layout_constraintBottom_toTopOf="@+id/guideline2"
+        app:layout_constraintStart_toEndOf="@+id/guideline6"
+        app:layout_constraintStart_toStartOf="@+id/guideline6"
         app:layout_constraintTop_toTopOf="parent" />
 
     <android.support.v7.widget.RecyclerView
@@ -141,5 +74,36 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="@+id/guideline5" />
+
+    <TextView
+        android:id="@+id/todayOut"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:layout_marginBottom="8dp"
+        android:layout_marginEnd="8dp"
+        android:layout_marginStart="8dp"
+        android:layout_marginTop="8dp"
+        android:gravity="end"
+        android:text="TextView"
+        android:textSize="30sp"
+        app:layout_constraintBottom_toTopOf="@+id/guideline2"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toEndOf="@+id/outYuan1"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <TextView
+        android:id="@+id/r-tOut"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:layout_marginBottom="8dp"
+        android:layout_marginEnd="8dp"
+        android:layout_marginStart="8dp"
+        android:layout_marginTop="8dp"
+        android:text="TextView"
+        android:textSize="30sp"
+        app:layout_constraintBottom_toTopOf="@+id/guideline5"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="@+id/guideline2" />
 
 </android.support.constraint.ConstraintLayout>

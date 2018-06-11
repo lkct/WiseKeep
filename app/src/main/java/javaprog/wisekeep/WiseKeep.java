@@ -1,6 +1,5 @@
 package javaprog.wisekeep;
 
-import android.content.Context;
 import android.content.DialogInterface;
 import android.content.Intent;
 import android.os.Bundle;
@@ -52,14 +51,26 @@ public class WiseKeep extends AppCompatActivity
 
         TextView DI = (TextView) findViewById(R.id.dateIn);
         TextView DO = (TextView) findViewById(R.id.dateOut);
-        String str = app.filename.substring(0,4);
-        str += "-";
-        str += app.filename.substring(4,6);
-        str += "-";
+        String str = app.filename.substring(0,4); str += "-";
+        str += app.filename.substring(4,6); str += "-";
         str += app.filename.substring(6,8);
         DI.setText(str);
         DO.setText(str);
 
+        TextView TO = (TextView) findViewById(R.id.todayOut);
+        TextView TI = (TextView) findViewById(R.id.todayIn);
+        TextView rtO = (TextView) findViewById(R.id.r_tOut);
+        TextView rtI = (TextView) findViewById(R.id.r_tIn);
+        double totI = 0.0, totO = 0.0;
+        for (int i = 0; i < app.inList.size(); i++) {
+            totI += ((FileApp.Term) app.inList.get(i)).amount;
+        }
+        for (int i = 0; i < app.outList.size(); i++) {
+            totO += ((FileApp.Term) app.outList.get(i)).amount;
+        }
+        TO.setText("" + totO);
+        TI.setText("" + totI);
+        // TODO: 2 rt is of the same value, but difficult to calculate now
     }
 
     @Override
