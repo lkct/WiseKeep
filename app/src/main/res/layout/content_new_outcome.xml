@@ -16,7 +16,7 @@
         android:layout_marginStart="8dp"
         android:layout_marginTop="16dp"
         android:ems="4"
-        android:gravity="right"
+        android:gravity="end"
         android:hint="金额"
         android:inputType="numberDecimal"
         android:textSize="30sp"
@@ -126,7 +126,7 @@
         android:layout_marginTop="300dp"
         android:text="描述"
         android:textColor="@android:color/black"
-        android:textSize="30sp"
+        android:textSize="24sp"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 

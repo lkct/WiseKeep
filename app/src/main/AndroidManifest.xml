@@ -3,6 +3,7 @@
     package="javaprog.wisekeep">
 
     <application
+        android:name=".FileApp"
         android:allowBackup="true"
         android:icon="@mipmap/ic_launcher"
         android:label="@string/app_name"
@@ -67,7 +68,11 @@
         <activity
             android:name=".OutcomeDetail"
             android:label="@string/title_activity_outcome_detail"
-            android:theme="@style/AppTheme.NoActionBar"></activity>
+            android:theme="@style/AppTheme.NoActionBar">
+            <meta-data
+                android:name="android.support.PARENT_ACTIVITY"
+                android:value="javaprog.wisekeep.WiseKeep" />
+        </activity>
     </application>
 
 </manifest>

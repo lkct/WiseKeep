@@ -22,4 +22,9 @@
     <string name="type3_out">娱乐</string>
     <string name="type4_out">投资</string>
     <string name="type5_out">其它</string>
+    <string name="type0_in">薪水</string>
+    <string name="type1_in">奖金</string>
+    <string name="type2_in">补助</string>
+    <string name="type3_in">投资</string>
+    <string name="type4_in">其它</string>
 </resources>

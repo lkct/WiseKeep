@@ -2,7 +2,6 @@ package javaprog.wisekeep;
 
 import android.os.Bundle;
 import android.support.design.widget.FloatingActionButton;
-import android.support.design.widget.Snackbar;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
 import android.text.Editable;
@@ -18,7 +17,7 @@ import java.util.List;
 
 public class NewOutcome extends AppCompatActivity {
 
-    public FileApp app = (FileApp) this.getApplication();
+    public FileApp app;
     public static final List buttonIds = Arrays.asList(R.id.type0_newout, R.id.type1_newout, R.id.type2_newout,
             R.id.type3_newout, R.id.type4_newout, R.id.type5_newout);
     public int curCheck = -1;
@@ -29,6 +28,8 @@ public class NewOutcome extends AppCompatActivity {
         setContentView(R.layout.activity_new_outcome);
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
+        getSupportActionBar().setDisplayHomeAsUpEnabled(true);
+        app = (FileApp) this.getApplication();
 
         FloatingActionButton fab = (FloatingActionButton) findViewById(R.id.fab_newout);
         fab.setOnClickListener(new View.OnClickListener() {
@@ -51,9 +52,10 @@ public class NewOutcome extends AppCompatActivity {
                 t.description = desc;
                 FileApp.outList.add(t);
                 app.saveTerm(FileApp.OUT);
+                Toast.makeText(NewOutcome.this, "保存成功", Toast.LENGTH_LONG).show();
+                NewOutcome.this.onBackPressed();
             }
         });
-        getSupportActionBar().setDisplayHomeAsUpEnabled(true);
 
         final EditText amount = (EditText) findViewById(R.id.amount_newout);
         amount.addTextChangedListener(new TextWatcher() {

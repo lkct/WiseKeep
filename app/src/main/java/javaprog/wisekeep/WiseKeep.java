@@ -19,7 +19,7 @@ import android.widget.DatePicker;
 public class WiseKeep extends AppCompatActivity
         implements NavigationView.OnNavigationItemSelectedListener, DatePicker.OnDateChangedListener {
 
-    public FileApp app = (FileApp) this.getApplication();
+    public FileApp app;
     public String curIO = FileApp.OUT;
     private Context context;
 
@@ -28,6 +28,7 @@ public class WiseKeep extends AppCompatActivity
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_wise_keep);
         context = this;
+        app = (FileApp) this.getApplication();
 
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
@@ -49,7 +50,6 @@ public class WiseKeep extends AppCompatActivity
 
         NavigationView navigationView = (NavigationView) findViewById(R.id.nav_view);
         navigationView.setNavigationItemSelectedListener(this);
-
 
     }
 

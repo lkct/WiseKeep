@@ -8,12 +8,115 @@
     tools:context=".NewIncome"
     tools:showIn="@layout/activity_new_income">
 
+    <EditText
+        android:id="@+id/amount_newin"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginEnd="8dp"
+        android:layout_marginStart="8dp"
+        android:layout_marginTop="16dp"
+        android:ems="4"
+        android:gravity="end"
+        android:hint="金额"
+        android:inputType="numberDecimal"
+        android:textSize="30sp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
     <TextView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="new in Hello World!"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintLeft_toLeftOf="parent"
-        app:layout_constraintRight_toRightOf="parent"
+        android:layout_marginBottom="8dp"
+        android:layout_marginEnd="8dp"
+        android:layout_marginTop="8dp"
+        android:text="￥"
+        android:textSize="30sp"
+        app:layout_constraintBottom_toBottomOf="@+id/amount_newin"
+        app:layout_constraintEnd_toStartOf="@+id/amount_newin"
+        app:layout_constraintTop_toTopOf="@+id/amount_newin" />
+
+    <ToggleButton
+        android:id="@+id/type0_newin"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="16dp"
+        android:layout_marginTop="112dp"
+        android:drawableTop="@android:drawable/ic_menu_myplaces"
+        android:textOff="@string/type0_in"
+        android:textOn="@string/type0_in"
+        app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
+
+    <ToggleButton
+        android:id="@+id/type1_newin"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="8dp"
+        android:drawableTop="@android:drawable/ic_menu_myplaces"
+        android:textOff="@string/type1_in"
+        android:textOn="@string/type1_in"
+        app:layout_constraintStart_toEndOf="@+id/type0_newin"
+        app:layout_constraintTop_toTopOf="@+id/type0_newin" />
+
+    <ToggleButton
+        android:id="@+id/type2_newin"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="8dp"
+        android:drawableTop="@android:drawable/ic_menu_myplaces"
+        android:textOff="@string/type2_in"
+        android:textOn="@string/type2_in"
+        app:layout_constraintStart_toEndOf="@+id/type1_newin"
+        app:layout_constraintTop_toTopOf="@+id/type1_newin" />
+
+    <ToggleButton
+        android:id="@+id/type3_newin"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="8dp"
+        android:drawableTop="@android:drawable/ic_menu_myplaces"
+        android:textOff="@string/type3_in"
+        android:textOn="@string/type3_in"
+        app:layout_constraintStart_toStartOf="@+id/type0_newin"
+        app:layout_constraintTop_toBottomOf="@+id/type0_newin" />
+
+    <ToggleButton
+        android:id="@+id/type4_newin"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="8dp"
+        android:drawableTop="@android:drawable/ic_menu_myplaces"
+        android:textOff="@string/type4_in"
+        android:textOn="@string/type4_in"
+        app:layout_constraintStart_toEndOf="@+id/type3_newin"
+        app:layout_constraintTop_toTopOf="@+id/type3_newin" />
+
+    <EditText
+        android:id="@+id/desc_newin"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginEnd="8dp"
+        android:layout_marginStart="8dp"
+        android:layout_marginTop="16dp"
+        android:ems="16"
+        android:inputType="textMultiLine"
+        android:maxLines="4"
+        app:layout_constrainedWidth="true"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/textView_desc_newin" />
+
+    <TextView
+        android:id="@+id/textView_desc_newin"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="16dp"
+        android:layout_marginTop="300dp"
+        android:text="描述"
+        android:textColor="@android:color/black"
+        android:textSize="24sp"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+    
 </android.support.constraint.ConstraintLayout>
