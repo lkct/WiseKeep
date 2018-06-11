@@ -83,6 +83,8 @@ public class WiseKeep extends AppCompatActivity
             builder.setPositiveButton("确定", new DialogInterface.OnClickListener() {
                 @Override
                 public void onClick(DialogInterface dialog, int which) {
+                    app.readTerm(FileApp.OUT);
+                    app.readTerm(FileApp.IN);
                     // TODO: 刷新条目列表
                     dialog.dismiss();
                 }
@@ -109,7 +111,6 @@ public class WiseKeep extends AppCompatActivity
         return super.onOptionsItemSelected(item);
     }
 
-    @SuppressWarnings("StatementWithEmptyBody")
     @Override
     public boolean onNavigationItemSelected(MenuItem item) {
         // Handle navigation view item clicks here.
@@ -136,10 +137,10 @@ public class WiseKeep extends AppCompatActivity
         return false;
     }
 
-
     public void onDateChanged(DatePicker view, int year, int month, int day) {
         FileApp.year = year;
         FileApp.month = month;
         FileApp.day = day;
+        FileApp.makeFileName();
     }
 }

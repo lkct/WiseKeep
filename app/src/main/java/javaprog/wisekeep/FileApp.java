@@ -22,6 +22,8 @@ public class FileApp extends Application {
     public static int goalPerMonth;
 
     public static int year, month, day;
+    public static String filename;
+    public static ArrayList dateList;
 
     public static class Term {
         public double amount;
@@ -52,7 +54,9 @@ public class FileApp extends Application {
             list = inList;
         }
         try {
-            FileOutputStream outputFile = openFileOutput(i_o + makeFileName(), MODE_PRIVATE);
+            String fn = i_o + filename;
+            FileOutputStream outputFile = openFileOutput(fn, MODE_PRIVATE);
+            // TODO: dateList, fn
             DataOutputStream output = new DataOutputStream(outputFile);
             output.writeInt(list.size());
             for (int i = 0; i < list.size(); i++) {
@@ -74,7 +78,7 @@ public class FileApp extends Application {
 
     public void readTerm(String i_o) {
         try {
-            FileInputStream inputFile = openFileInput(i_o + makeFileName());
+            FileInputStream inputFile = openFileInput(i_o + filename);
             DataInputStream input = new DataInputStream(inputFile);
             ArrayList list = new ArrayList();
             int size = input.readInt();
@@ -145,8 +149,8 @@ public class FileApp extends Application {
         }
     }
 
-    public static String makeFileName() {
-        return String.format("%04d%02d%02d", year, month, day);
+    public static void makeFileName() {
+        filename = String.format("%04d%02d%02d", year, month, day);
     }
 
 }
