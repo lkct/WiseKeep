@@ -29,36 +29,4 @@ public class NewIncome extends AppCompatActivity {
         });
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
     }
-
-    public void addNewIncome() {
-        FileApp app = (FileApp)this.getApplication();
-        ArrayList list = new ArrayList();
-        list = app.readTerm(FileApp.IN);
-
-        FileApp.Term t = app.new Term();
-        list.add(t);
-
-        app.saveTerm(FileApp.IN, list);
-    }
-
-    public void editOldIncome() {
-        FileApp app = (FileApp)this.getApplication();
-        ArrayList list = new ArrayList();
-        list = app.readTerm(FileApp.IN);
-
-
-
-        app.saveTerm(FileApp.IN, list);
-    }
-
-    public void deleteOldIncome() {
-        FileApp app = (FileApp)this.getApplication();
-        ArrayList list = new ArrayList();
-        list = app.readTerm(FileApp.IN);
-
-
-
-        app.saveTerm(FileApp.IN, list);
-    }
-
 }
