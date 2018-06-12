@@ -9,10 +9,11 @@ import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
 import android.view.View;
 import android.widget.Button;
+import android.widget.TextView;
 
 public class OutcomeDetail extends AppCompatActivity {
 
-    private Button rtn, dlt, edt;
+    private Button dlt;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -20,17 +21,7 @@ public class OutcomeDetail extends AppCompatActivity {
         Toolbar toolbar = findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
 
-        rtn = (Button) findViewById(R.id.returnOut);
         dlt = (Button) findViewById(R.id.deleteOut);
-        edt = (Button) findViewById(R.id.editOut);
-
-        rtn.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                OutcomeDetail.this.onBackPressed();
-            }
-        });
-
         dlt.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -60,6 +51,15 @@ public class OutcomeDetail extends AppCompatActivity {
                 alertDialog.show();
             }
         });
+
+        TextView txt1, txt2, txt3;
+        txt1 = findViewById(R.id.disAmoOut);
+        txt2 = findViewById(R.id.disTypOut);
+        txt3 = findViewById(R.id.disDesOut);
+        FileApp.Term t = FileApp.outList.get(FileApp.curDetail);
+        txt1.setText(String.valueOf(t.amount));
+        txt2.setText(FileApp.outTypeStrId.get(t.type));
+        txt3.setText(t.description);
     }
 
 }

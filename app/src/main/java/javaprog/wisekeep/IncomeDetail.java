@@ -7,10 +7,11 @@ import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
 import android.view.View;
 import android.widget.Button;
+import android.widget.TextView;
 
 public class IncomeDetail extends AppCompatActivity {
 
-    private Button rtn, dlt, edt;
+    private Button dlt;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -18,17 +19,7 @@ public class IncomeDetail extends AppCompatActivity {
         Toolbar toolbar = findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
 
-        rtn = findViewById(R.id.returnIn);
         dlt = findViewById(R.id.deleteIn);
-        edt = findViewById(R.id.editIn);
-
-        rtn.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                IncomeDetail.this.onBackPressed();
-            }
-        });
-
         dlt.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -59,6 +50,14 @@ public class IncomeDetail extends AppCompatActivity {
             }
         });
 
+        TextView txt1, txt2, txt3;
+        txt1 = findViewById(R.id.disAmoIn);
+        txt2 = findViewById(R.id.disTypIn);
+        txt3 = findViewById(R.id.disDesIn);
+        FileApp.Term t = FileApp.inList.get(FileApp.curDetail);
+        txt1.setText(String.valueOf(t.amount));
+        txt2.setText(FileApp.inTypeStrId.get(t.type));
+        txt3.setText(t.description);
     }
 
     public void Deletion() {
