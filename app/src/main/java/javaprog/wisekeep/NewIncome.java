@@ -93,7 +93,7 @@ public class NewIncome extends AppCompatActivity {
         });
 
         for (int i = 0; i < FileApp.inBtnId.size(); i++) {
-            ((ToggleButton) findViewById((int) FileApp.inBtnId.get(i))).setOnCheckedChangeListener(OnChecked);
+            ((ToggleButton) findViewById(FileApp.inBtnId.get(i))).setOnCheckedChangeListener(OnChecked);
         }
     }
 
@@ -106,11 +106,11 @@ public class NewIncome extends AppCompatActivity {
                 curCheck = FileApp.inBtnId.indexOf(thisId);
                 for (int i = 0; i < FileApp.inBtnId.size(); i++) {
                     if (curCheck != i) {
-                        ((ToggleButton) findViewById((int) FileApp.inBtnId.get(i))).setChecked(false);
+                        ((ToggleButton) findViewById(FileApp.inBtnId.get(i))).setChecked(false);
                     }
                 }
             } else {
-                if ((int) FileApp.inBtnId.get(curCheck) == thisId) {
+                if (FileApp.inBtnId.get(curCheck) == thisId) {
                     buttonView.setChecked(true);
                 }
             }

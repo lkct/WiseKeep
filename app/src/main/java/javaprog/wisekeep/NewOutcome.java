@@ -94,7 +94,7 @@ public class NewOutcome extends AppCompatActivity {
         });
 
         for (int i = 0; i < FileApp.outBtnId.size(); i++) {
-            ((ToggleButton) findViewById((int) FileApp.outBtnId.get(i))).setOnCheckedChangeListener(OnChecked);
+            ((ToggleButton) findViewById(FileApp.outBtnId.get(i))).setOnCheckedChangeListener(OnChecked);
         }
     }
 
@@ -107,11 +107,11 @@ public class NewOutcome extends AppCompatActivity {
                 curCheck = FileApp.outBtnId.indexOf(thisId);
                 for (int i = 0; i < FileApp.outBtnId.size(); i++) {
                     if (curCheck != i) {
-                        ((ToggleButton) findViewById((int) FileApp.outBtnId.get(i))).setChecked(false);
+                        ((ToggleButton) findViewById(FileApp.outBtnId.get(i))).setChecked(false);
                     }
                 }
             } else {
-                if ((int) FileApp.outBtnId.get(curCheck) == thisId) {
+                if (FileApp.outBtnId.get(curCheck) == thisId) {
                     buttonView.setChecked(true);
                 }
             }

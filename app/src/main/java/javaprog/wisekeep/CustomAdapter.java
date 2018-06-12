@@ -15,8 +15,8 @@ import java.util.List;
 
 public class CustomAdapter extends RecyclerView.Adapter<CustomAdapter.ViewHolder> {
 
-    private final List list;
-    private final List typeStrId;
+    private final List<FileApp.Term> list;
+    private final List<Integer> typeStrId;
     private final Class detailAct;
 
     CustomAdapter(String i_o) {
@@ -52,7 +52,7 @@ public class CustomAdapter extends RecyclerView.Adapter<CustomAdapter.ViewHolder
             textViewAmt = v.findViewById(R.id.textViewItemAmt);
         }
 
-        private List getTextView() {
+        private List<TextView> getTextView() {
             return Arrays.asList(textViewType, textViewAmt);
         }
     }
@@ -68,11 +68,11 @@ public class CustomAdapter extends RecyclerView.Adapter<CustomAdapter.ViewHolder
 
     @Override
     public void onBindViewHolder(@NonNull ViewHolder viewHolder, final int position) {
-        List l = viewHolder.getTextView();
-        TextView textViewType = (TextView) l.get(0);
-        TextView textViewAmt = (TextView) l.get(1);
-        FileApp.Term t = (FileApp.Term) list.get(position);
-        textViewType.setText((int) typeStrId.get(t.type));
+        List<TextView> l = viewHolder.getTextView();
+        TextView textViewType = l.get(0);
+        TextView textViewAmt = l.get(1);
+        FileApp.Term t = list.get(position);
+        textViewType.setText(typeStrId.get(t.type));
         textViewAmt.setText(textViewAmt.getResources().getString(R.string.yuan_amt, t.amount));
     }
 
