@@ -11,13 +11,16 @@ import android.widget.TextView;
 
 public class IncomeDetail extends AppCompatActivity {
 
+    public FileApp app;
     private Button dlt;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_income_detail);
         Toolbar toolbar = findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
+        app = (FileApp) this.getApplication();
 
         dlt = findViewById(R.id.deleteIn);
         dlt.setOnClickListener(new View.OnClickListener() {
@@ -32,6 +35,7 @@ public class IncomeDetail extends AppCompatActivity {
                             @Override
                             public void onClick(DialogInterface arg0, int arg1) {
                                 FileApp.inList.remove(FileApp.curDetail);
+                                app.saveTerm(FileApp.IN);
                                 FileApp.curDetail = -1;
                                 FileApp.mainAct.refreshDateAmount();
                                 FileApp.mainAct.refreshRecycler();

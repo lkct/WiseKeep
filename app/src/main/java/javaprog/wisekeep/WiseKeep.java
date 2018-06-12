@@ -64,8 +64,8 @@ public class WiseKeep extends AppCompatActivity
         String std = FileApp.filename.substring(0,6) + String.valueOf(FileApp.startingDate);
         if (FileApp.startingDate > FileApp.day)
             std = std.substring(0, 4) + String.valueOf(FileApp.month) + std.substring(6, 8);
-        rtO.setText(String.valueOf(app.sumRange(FileApp.OUT, std, FileApp.filename)));
-        rtI.setText(String.valueOf(app.sumRange(FileApp.IN, std, FileApp.filename)));
+        rtO.setText(String.format(Locale.getDefault(),"%.2f / %d", app.sumRange(FileApp.OUT, std, FileApp.filename), FileApp.budgetPerMonth));
+        rtI.setText(String.format(Locale.getDefault(),"%.2f / %d", app.sumRange(FileApp.IN, std, FileApp.filename), FileApp.goalPerMonth));
 
         RecyclerView recyclerOut = findViewById(R.id.recyclerOut);
         RecyclerView.LayoutManager layoutManager = new LinearLayoutManager(this);
@@ -105,8 +105,8 @@ public class WiseKeep extends AppCompatActivity
         String std = FileApp.filename.substring(0,6) + String.valueOf(FileApp.startingDate);
         if (FileApp.startingDate > FileApp.day)
             std = std.substring(0, 4) + String.valueOf(FileApp.month) + std.substring(6, 8);
-        rtO.setText(String.valueOf(app.sumRange(FileApp.OUT, std, FileApp.filename)));
-        rtI.setText(String.valueOf(app.sumRange(FileApp.IN, std, FileApp.filename)));
+        rtO.setText(String.format(Locale.getDefault(),"%.2f / %d", app.sumRange(FileApp.OUT, std, FileApp.filename), FileApp.budgetPerMonth));
+        rtI.setText(String.format(Locale.getDefault(),"%.2f / %d", app.sumRange(FileApp.IN, std, FileApp.filename), FileApp.goalPerMonth));
     }
 
     @Override
@@ -143,7 +143,6 @@ public class WiseKeep extends AppCompatActivity
                     app.readTerm(FileApp.IN);
                     FileApp.mainAct.refreshDateAmount();
                     FileApp.mainAct.refreshRecycler();
-                    refreshRecycler();
                     dialog.dismiss();
                 }
             });
@@ -200,7 +199,7 @@ public class WiseKeep extends AppCompatActivity
     @Override
     public void onDateChanged(DatePicker view, int year, int month, int day) {
         FileApp.year = year;
-        FileApp.month = month;
+        FileApp.month = month + 1;
         FileApp.day = day;
         app.makeFileName();
     }
