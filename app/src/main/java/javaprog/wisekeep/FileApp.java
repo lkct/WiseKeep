@@ -16,6 +16,8 @@ import java.util.List;
 public class FileApp extends Application {
 
     // global vars
+    public static WiseKeep mainAct;
+
     public static final String OUT = "out";
     public static final String IN = "in";
 

@@ -48,7 +48,7 @@ public class NewIncome extends AppCompatActivity {
                 FileApp.inList.add(t);
                 app.saveTerm(FileApp.IN);
                 Toast.makeText(NewIncome.this, "保存成功", Toast.LENGTH_LONG).show();
-                // TODO: refresh
+                FileApp.mainAct.refreshRecycler();
                 NewIncome.this.onBackPressed();
             }
         });

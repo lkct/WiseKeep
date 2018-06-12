@@ -43,7 +43,7 @@ public class CustomAdapter extends RecyclerView.Adapter<CustomAdapter.ViewHolder
                 @Override
                 public void onClick(View v) {
                     Context ctx = v.getContext();
-                    Toast.makeText(ctx, "Element " + getAdapterPosition() + " clicked.", Toast.LENGTH_LONG).show();
+                    FileApp.curDetail = getAdapterPosition();
                     Intent intent = new Intent(ctx, detailAct);
                     ctx.startActivity(intent);
                 }

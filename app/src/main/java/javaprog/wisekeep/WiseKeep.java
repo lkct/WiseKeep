@@ -31,6 +31,7 @@ public class WiseKeep extends AppCompatActivity
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_wise_keep);
         app = (FileApp) this.getApplication();
+        FileApp.mainAct = this;
 
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
@@ -66,6 +67,15 @@ public class WiseKeep extends AppCompatActivity
 
     }
 
+    public void refreshRecycler() {
+        RecyclerView recyclerOut = (RecyclerView) findViewById(R.id.recyclerOut);
+        CustomAdapter adapter = new CustomAdapter(FileApp.OUT);
+        recyclerOut.setAdapter(adapter);
+        RecyclerView recyclerIn = (RecyclerView) findViewById(R.id.recyclerIn);
+        adapter = new CustomAdapter(FileApp.IN);
+        recyclerIn.setAdapter(adapter);
+    }
+
     @Override
     public void onBackPressed() {
         DrawerLayout drawer = (DrawerLayout) findViewById(R.id.drawer_layout);
@@ -99,6 +109,7 @@ public class WiseKeep extends AppCompatActivity
                     app.readTerm(FileApp.OUT);
                     app.readTerm(FileApp.IN);
                     // TODO: 刷新条目列表
+                    refreshRecycler();
                     dialog.dismiss();
                 }
             });
