@@ -5,8 +5,8 @@ import android.app.Application;
 import java.io.DataInputStream;
 import java.io.DataOutputStream;
 import java.io.FileInputStream;
-import java.io.FileOutputStream;
 import java.io.FileNotFoundException;
+import java.io.FileOutputStream;
 import java.io.IOException;
 import java.util.ArrayList;
 import java.util.Arrays;
@@ -62,8 +62,12 @@ public class FileApp extends Application {
         readTerm(IN);
     }
 
+    public String dateToStr(int year, int month, int day) {
+        return String.format(Locale.getDefault(), "%04d%02d%02d", year, month, day);
+    }
+
     public void makeFileName() {
-        filename = String.format(Locale.getDefault(), "%04d%02d%02d", year, month, day);
+        filename = dateToStr(year, month, day);
     }
 
     public void initDate() {
@@ -86,12 +90,12 @@ public class FileApp extends Application {
         ArrayList<Term> list;
         if (i_o.equals(OUT)) {
             list = outList;
-            if (outDateList.indexOf(filename) == -1){
+            if (outDateList.indexOf(filename) == -1) {
                 outDateList.add(filename);
             }
         } else {
             list = inList;
-            if (inDateList.indexOf(filename) == -1){
+            if (inDateList.indexOf(filename) == -1) {
                 inDateList.add(filename);
             }
         }
@@ -202,6 +206,49 @@ public class FileApp extends Application {
         } catch (IOException e) {
             e.printStackTrace();
         }
+    }
+
+    public double sumDate(String i_o, String date) {
+        try {
+            FileInputStream inputFile = openFileInput(i_o + date);
+            DataInputStream input = new DataInputStream(inputFile);
+            int size = input.readInt();
+            double sum = 0;
+            for (int i = 0; i < size; i++) {
+                sum += input.readDouble();
+                input.readInt();
+                int len = input.readInt();
+                for (int j = 0; j < len; j++) {
+                    input.readChar();
+                }
+            }
+            input.close();
+            inputFile.close();
+            return sum;
+        } catch (FileNotFoundException e) {
+            return 0;
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+        return 0;
+    }
+
+    public double sumRange(String i_o, String date0, String date1) {
+        ArrayList<String> dateList;
+        if (i_o.equals(OUT)) {
+            dateList = outDateList;
+        } else {
+            dateList = inDateList;
+        }
+        int size = dateList.size();
+        double sum = 0;
+        for (int i = 0; i < size; i++) {
+            if ((Integer.valueOf(dateList.get(i)) >= Integer.valueOf(date0)) &&
+                    (Integer.valueOf(dateList.get(i)) <= Integer.valueOf(date1))) {
+                sum += sumDate(i_o, dateList.get(i));
+            }
+        }
+        return sum;
     }
 
 }
