@@ -171,5 +171,5 @@ public class WiseKeep extends AppCompatActivity
         FileApp.day = day;
         app.makeFileName();
     }
-    
+
 }
