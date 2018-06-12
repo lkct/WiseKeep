@@ -89,6 +89,26 @@ public class WiseKeep extends AppCompatActivity
         recyclerIn.setAdapter(adapter);
     }
 
+    public void refreshDateAmount() {
+        TextView DI = findViewById(R.id.dateIn);
+        TextView DO = findViewById(R.id.dateOut);
+        String str = String.format(Locale.getDefault(), "%04d-%02d-%02d", FileApp.year, FileApp.month, FileApp.day);
+        DI.setText(str);
+        DO.setText(str);
+
+        TextView TO = findViewById(R.id.todayOut);
+        TextView TI = findViewById(R.id.todayIn);
+        TextView rtO = findViewById(R.id.r_tOut);
+        TextView rtI = findViewById(R.id.r_tIn);
+        TO.setText(String.valueOf(app.sumDate(FileApp.OUT, FileApp.filename)));
+        TI.setText(String.valueOf(app.sumDate(FileApp.IN, FileApp.filename)));
+        String std = FileApp.filename.substring(0,6) + String.valueOf(FileApp.startingDate);
+        if (FileApp.startingDate > FileApp.day)
+            std = std.substring(0, 4) + String.valueOf(FileApp.month) + std.substring(6, 8);
+        rtO.setText(String.valueOf(app.sumRange(FileApp.OUT, std, FileApp.filename)));
+        rtI.setText(String.valueOf(app.sumRange(FileApp.IN, std, FileApp.filename)));
+    }
+
     @Override
     public void onBackPressed() {
         DrawerLayout drawer = findViewById(R.id.drawer_layout);
