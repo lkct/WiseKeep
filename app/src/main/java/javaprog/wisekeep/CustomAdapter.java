@@ -48,8 +48,8 @@ public class CustomAdapter extends RecyclerView.Adapter<CustomAdapter.ViewHolder
                     ctx.startActivity(intent);
                 }
             });
-            textViewType = (TextView) v.findViewById(R.id.textViewItemType);
-            textViewAmt = (TextView) v.findViewById(R.id.textViewItemAmt);
+            textViewType = v.findViewById(R.id.textViewItemType);
+            textViewAmt = v.findViewById(R.id.textViewItemAmt);
         }
 
         private List getTextView() {

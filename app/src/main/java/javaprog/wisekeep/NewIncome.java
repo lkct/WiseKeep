@@ -12,6 +12,8 @@ import android.widget.EditText;
 import android.widget.Toast;
 import android.widget.ToggleButton;
 
+import java.util.Objects;
+
 public class NewIncome extends AppCompatActivity {
     
     public FileApp app;
@@ -21,12 +23,12 @@ public class NewIncome extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_new_income);
-        Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
+        Toolbar toolbar = findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
-        getSupportActionBar().setDisplayHomeAsUpEnabled(true);
+        Objects.requireNonNull(getSupportActionBar()).setDisplayHomeAsUpEnabled(true);
         app = (FileApp) this.getApplication();
 
-        FloatingActionButton fab = (FloatingActionButton) findViewById(R.id.fab_newin);
+        FloatingActionButton fab = findViewById(R.id.fab_newin);
         fab.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -52,7 +54,7 @@ public class NewIncome extends AppCompatActivity {
                 NewIncome.this.onBackPressed();
             }
         });
-        final EditText amount = (EditText) findViewById(R.id.amount_newin);
+        final EditText amount = findViewById(R.id.amount_newin);
         amount.addTextChangedListener(new TextWatcher() {
 
             @Override

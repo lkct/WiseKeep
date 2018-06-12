@@ -12,6 +12,8 @@ import android.widget.EditText;
 import android.widget.Toast;
 import android.widget.ToggleButton;
 
+import java.util.Objects;
+
 public class NewOutcome extends AppCompatActivity {
 
     public FileApp app;
@@ -21,12 +23,12 @@ public class NewOutcome extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_new_outcome);
-        Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
+        Toolbar toolbar = findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
-        getSupportActionBar().setDisplayHomeAsUpEnabled(true);
+        Objects.requireNonNull(getSupportActionBar()).setDisplayHomeAsUpEnabled(true);
         app = (FileApp) this.getApplication();
 
-        FloatingActionButton fab = (FloatingActionButton) findViewById(R.id.fab_newout);
+        FloatingActionButton fab = findViewById(R.id.fab_newout);
         fab.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -53,7 +55,7 @@ public class NewOutcome extends AppCompatActivity {
             }
         });
 
-        final EditText amount = (EditText) findViewById(R.id.amount_newout);
+        final EditText amount = findViewById(R.id.amount_newout);
         amount.addTextChangedListener(new TextWatcher() {
 
             @Override

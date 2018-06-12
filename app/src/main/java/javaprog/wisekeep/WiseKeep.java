@@ -3,6 +3,7 @@ package javaprog.wisekeep;
 import android.content.DialogInterface;
 import android.content.Intent;
 import android.os.Bundle;
+import android.support.annotation.NonNull;
 import android.support.design.widget.NavigationView;
 import android.support.v4.view.GravityCompat;
 import android.support.v4.widget.DrawerLayout;
@@ -18,7 +19,7 @@ import android.view.View;
 import android.widget.DatePicker;
 import android.widget.TextView;
 
-import java.io.File;
+import java.util.Locale;
 
 public class WiseKeep extends AppCompatActivity
         implements NavigationView.OnNavigationItemSelectedListener, DatePicker.OnDateChangedListener {
@@ -33,33 +34,33 @@ public class WiseKeep extends AppCompatActivity
         app = (FileApp) this.getApplication();
         FileApp.mainAct = this;
 
-        Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
+        Toolbar toolbar = findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
 
-        DrawerLayout drawer = (DrawerLayout) findViewById(R.id.drawer_layout);
+        DrawerLayout drawer = findViewById(R.id.drawer_layout);
         ActionBarDrawerToggle toggle = new ActionBarDrawerToggle(
                 this, drawer, toolbar, R.string.navigation_drawer_open, R.string.navigation_drawer_close);
         drawer.addDrawerListener(toggle);
         toggle.syncState();
 
-        NavigationView navigationView = (NavigationView) findViewById(R.id.nav_view);
+        NavigationView navigationView = findViewById(R.id.nav_view);
         navigationView.setNavigationItemSelectedListener(this);
 
         curIO = FileApp.OUT;
         setTitle(R.string.title_activity_outcome);
 
-        TextView DI = (TextView) findViewById(R.id.dateIn);
-        TextView DO = (TextView) findViewById(R.id.dateOut);
-        String str = String.format("%04d-%02d-%02d", FileApp.year, FileApp.month, FileApp.day);
+        TextView DI = findViewById(R.id.dateIn);
+        TextView DO = findViewById(R.id.dateOut);
+        String str = String.format(Locale.getDefault(), "%04d-%02d-%02d", FileApp.year, FileApp.month, FileApp.day);
         DI.setText(str);
         DO.setText(str);
 
-        RecyclerView recyclerOut = (RecyclerView) findViewById(R.id.recyclerOut);
+        RecyclerView recyclerOut = findViewById(R.id.recyclerOut);
         RecyclerView.LayoutManager layoutManager = new LinearLayoutManager(this);
         recyclerOut.setLayoutManager(layoutManager);
         CustomAdapter adapter = new CustomAdapter(FileApp.OUT);
         recyclerOut.setAdapter(adapter);
-        RecyclerView recyclerIn = (RecyclerView) findViewById(R.id.recyclerIn);
+        RecyclerView recyclerIn = findViewById(R.id.recyclerIn);
         layoutManager = new LinearLayoutManager(this);
         recyclerIn.setLayoutManager(layoutManager);
         adapter = new CustomAdapter(FileApp.IN);
@@ -68,17 +69,17 @@ public class WiseKeep extends AppCompatActivity
     }
 
     public void refreshRecycler() {
-        RecyclerView recyclerOut = (RecyclerView) findViewById(R.id.recyclerOut);
+        RecyclerView recyclerOut = findViewById(R.id.recyclerOut);
         CustomAdapter adapter = new CustomAdapter(FileApp.OUT);
         recyclerOut.setAdapter(adapter);
-        RecyclerView recyclerIn = (RecyclerView) findViewById(R.id.recyclerIn);
+        RecyclerView recyclerIn = findViewById(R.id.recyclerIn);
         adapter = new CustomAdapter(FileApp.IN);
         recyclerIn.setAdapter(adapter);
     }
 
     @Override
     public void onBackPressed() {
-        DrawerLayout drawer = (DrawerLayout) findViewById(R.id.drawer_layout);
+        DrawerLayout drawer = findViewById(R.id.drawer_layout);
         if (drawer.isDrawerOpen(GravityCompat.START)) {
             drawer.closeDrawer(GravityCompat.START);
         } else {
@@ -116,7 +117,7 @@ public class WiseKeep extends AppCompatActivity
 
             final AlertDialog dialog = builder.create();
             View dialogView = View.inflate(WiseKeep.this, R.layout.dialog_data, null);
-            final DatePicker datePicker = (DatePicker) dialogView.findViewById(R.id.datePicker);
+            final DatePicker datePicker = dialogView.findViewById(R.id.datePicker);
             dialog.setTitle("设置日期");
             dialog.setView(dialogView);
             dialog.show();
@@ -136,7 +137,7 @@ public class WiseKeep extends AppCompatActivity
     }
 
     @Override
-    public boolean onNavigationItemSelected(MenuItem item) {
+    public boolean onNavigationItemSelected(@NonNull MenuItem item) {
         // Handle navigation view item clicks here.
         int id = item.getItemId();
 
@@ -158,7 +159,7 @@ public class WiseKeep extends AppCompatActivity
             startActivity(intent);
         }
 
-        DrawerLayout drawer = (DrawerLayout) findViewById(R.id.drawer_layout);
+        DrawerLayout drawer = findViewById(R.id.drawer_layout);
         drawer.closeDrawer(GravityCompat.START);
         return false;
     }

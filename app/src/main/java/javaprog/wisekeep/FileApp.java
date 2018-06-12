@@ -12,6 +12,7 @@ import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.Calendar;
 import java.util.List;
+import java.util.Locale;
 
 public class FileApp extends Application {
 
@@ -36,8 +37,8 @@ public class FileApp extends Application {
 
     public static int year, month, day;
     public static String filename;
-    public static ArrayList outDateList;
-    public static ArrayList inDateList;
+    public static ArrayList<String> outDateList;
+    public static ArrayList<String> inDateList;
 
     public static class Term {
         public double amount;
@@ -45,8 +46,8 @@ public class FileApp extends Application {
         public String description;
     }
 
-    public static ArrayList inList;
-    public static ArrayList outList;
+    public static ArrayList<Term> inList;
+    public static ArrayList<Term> outList;
 
     public static int curDetail = -1;
 
@@ -62,7 +63,7 @@ public class FileApp extends Application {
     }
 
     public void makeFileName() {
-        filename = String.format("%04d%02d%02d", year, month, day);
+        filename = String.format(Locale.getDefault(), "%04d%02d%02d", year, month, day);
     }
 
     public void initDate() {
@@ -112,7 +113,7 @@ public class FileApp extends Application {
         try {
             FileInputStream inputFile = openFileInput(i_o + filename);
             DataInputStream input = new DataInputStream(inputFile);
-            ArrayList list = new ArrayList();
+            ArrayList<Term> list = new ArrayList<>();
             int size = input.readInt();
             for (int i = 0; i < size; i++) {
                 Term t = new Term();
@@ -135,9 +136,9 @@ public class FileApp extends Application {
             }
         } catch (FileNotFoundException e) {
             if (i_o.equals(OUT)) {
-                outList = new ArrayList();
+                outList = new ArrayList<>();
             } else {
-                inList = new ArrayList();
+                inList = new ArrayList<>();
             }
         } catch (IOException e) {
             e.printStackTrace();
