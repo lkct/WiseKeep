@@ -35,4 +35,6 @@
     <string name="edtDecision">确定修改吗？</string>
     <string name="yuan">￥</string>
     <string name="yuan_amt">￥ %.2f</string>
+    <string name="hint_amount">金额</string>
+    <string name="hint_desc">描述</string>
 </resources>
