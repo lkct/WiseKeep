@@ -19,6 +19,7 @@ import android.view.View;
 import android.widget.DatePicker;
 import android.widget.TextView;
 
+import java.util.Calendar;
 import java.util.Locale;
 
 import static javaprog.wisekeep.FileApp.month;
@@ -180,7 +181,13 @@ public class WiseKeep extends AppCompatActivity
         drawer.closeDrawer(GravityCompat.START);
         return false;
     }
-
+    private void init(){
+        Calendar calendar = null;
+        calendar = Calendar.getInstance();
+        app.year = calendar.get(Calendar.YEAR);
+        app.month = calendar.get(Calendar.MONTH);
+        app.day = calendar.get(Calendar.DAY_OF_MONTH);
+    }
     @Override
     public void onDateChanged(DatePicker view, int year, int month, int day) {
         FileApp.year = year;
