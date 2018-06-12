@@ -22,9 +22,13 @@ public class IncomeDetail extends AppCompatActivity {
         dlt = findViewById(R.id.deleteIn);
         edt = findViewById(R.id.editIn);
 
-        //rtn.setOnClickListener((view) -> {
+        rtn.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                IncomeDetail.this.onBackPressed();
+            }
+        });
 
-        //});
         dlt.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
