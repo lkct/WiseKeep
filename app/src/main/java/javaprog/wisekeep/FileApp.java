@@ -84,8 +84,14 @@ public class FileApp extends Application {
         ArrayList<Term> list;
         if (i_o.equals(OUT)) {
             list = outList;
+            if (outDateList.indexOf(filename) == -1){
+                outDateList.add(filename);
+            }
         } else {
             list = inList;
+            if (inDateList.indexOf(filename) == -1){
+                inDateList.add(filename);
+            }
         }
         try {
             FileOutputStream outputFile = openFileOutput(i_o + filename, MODE_PRIVATE);
