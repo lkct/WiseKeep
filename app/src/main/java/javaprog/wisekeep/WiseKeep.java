@@ -141,7 +141,8 @@ public class WiseKeep extends AppCompatActivity
                 public void onClick(DialogInterface dialog, int which) {
                     app.readTerm(FileApp.OUT);
                     app.readTerm(FileApp.IN);
-                    // TODO: 刷新条目列表
+                    FileApp.mainAct.refreshDateAmount();
+                    FileApp.mainAct.refreshRecycler();
                     refreshRecycler();
                     dialog.dismiss();
                 }
