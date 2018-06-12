@@ -35,7 +35,8 @@ public class OutcomeDetail extends AppCompatActivity {
                             public void onClick(DialogInterface arg0, int arg1) {
                                 FileApp.outList.remove(FileApp.curDetail);
                                 FileApp.curDetail = -1;
-                                // TODO:refresh the act...
+                                FileApp.mainAct.refreshDateAmount();
+                                FileApp.mainAct.refreshRecycler();
                                 OutcomeDetail.this.onBackPressed();
                             }
                         });
