@@ -9,6 +9,8 @@
     <string name="add">Add</string>
     <string name="date">Date</string>
     <string name="nothing">不积小流 无以成江河</string>
+    <string name="title_activity_income">收入</string>
+    <string name="title_activity_outcome">支出</string>
     <string name="title_activity_settings">设置</string>
     <string name="title_activity_summary">统计</string>
     <string name="title_activity_new_income">新增收入</string>

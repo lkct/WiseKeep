@@ -18,11 +18,13 @@ import android.view.View;
 import android.widget.DatePicker;
 import android.widget.TextView;
 
+import java.io.File;
+
 public class WiseKeep extends AppCompatActivity
         implements NavigationView.OnNavigationItemSelectedListener, DatePicker.OnDateChangedListener {
 
     public FileApp app;
-    public String curIO = FileApp.OUT;
+    public String curIO;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -42,16 +44,24 @@ public class WiseKeep extends AppCompatActivity
         NavigationView navigationView = (NavigationView) findViewById(R.id.nav_view);
         navigationView.setNavigationItemSelectedListener(this);
 
+        curIO = FileApp.OUT;
+        setTitle(R.string.title_activity_outcome);
+
         TextView DI = (TextView) findViewById(R.id.dateIn);
         TextView DO = (TextView) findViewById(R.id.dateOut);
         String str = String.format("%04d-%02d-%02d", FileApp.year, FileApp.month, FileApp.day);
         DI.setText(str);
         DO.setText(str);
 
-        RecyclerView recyclerIn = (RecyclerView) findViewById(R.id.recyclerIn);
+        RecyclerView recyclerOut = (RecyclerView) findViewById(R.id.recyclerOut);
         RecyclerView.LayoutManager layoutManager = new LinearLayoutManager(this);
+        recyclerOut.setLayoutManager(layoutManager);
+        CustomAdapter adapter = new CustomAdapter(FileApp.OUT);
+        recyclerOut.setAdapter(adapter);
+        RecyclerView recyclerIn = (RecyclerView) findViewById(R.id.recyclerIn);
+        layoutManager = new LinearLayoutManager(this);
         recyclerIn.setLayoutManager(layoutManager);
-        CustomAdapter adapter = new CustomAdapter();
+        adapter = new CustomAdapter(FileApp.IN);
         recyclerIn.setAdapter(adapter);
 
     }
@@ -123,10 +133,12 @@ public class WiseKeep extends AppCompatActivity
             findViewById(R.id.include_in).setVisibility(View.INVISIBLE);
             findViewById(R.id.include_out).setVisibility(View.VISIBLE);
             curIO = FileApp.OUT;
+            setTitle(R.string.title_activity_outcome);
         } else if (id == R.id.nav_income) {
             findViewById(R.id.include_in).setVisibility(View.VISIBLE);
             findViewById(R.id.include_out).setVisibility(View.INVISIBLE);
             curIO = FileApp.IN;
+            setTitle(R.string.title_activity_income);
         } else if (id == R.id.nav_summary) {
             Intent intent = new Intent(WiseKeep.this, Summary.class);
             startActivity(intent);
