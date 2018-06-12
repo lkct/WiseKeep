@@ -33,7 +33,8 @@ public class IncomeDetail extends AppCompatActivity {
                             public void onClick(DialogInterface arg0, int arg1) {
                                 FileApp.inList.remove(FileApp.curDetail);
                                 FileApp.curDetail = -1;
-                                // TODO:refresh the act...
+                                FileApp.mainAct.refreshDateAmount();
+                                FileApp.mainAct.refreshRecycler();
                                 IncomeDetail.this.onBackPressed();
                             }
                         });

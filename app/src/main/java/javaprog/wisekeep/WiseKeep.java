@@ -59,16 +59,13 @@ public class WiseKeep extends AppCompatActivity
         TextView TI = findViewById(R.id.todayIn);
         TextView rtO = findViewById(R.id.r_tOut);
         TextView rtI = findViewById(R.id.r_tIn);
-        double totI = 0.0, totO = 0.0;
-        for (int i = 0; i < FileApp.inList.size(); i++) {
-            totI += FileApp.inList.get(i).amount;
-        }
-        for (int i = 0; i < FileApp.outList.size(); i++) {
-            totO += FileApp.outList.get(i).amount;
-        }
-        TO.setText(String.valueOf(totO));
-        TI.setText(String.valueOf(totI));
-        // TODO: 2 rt is of the same value, but difficult to calculate now, calc in summary first
+        TO.setText(String.valueOf(app.sumDate(FileApp.OUT, FileApp.filename)));
+        TI.setText(String.valueOf(app.sumDate(FileApp.IN, FileApp.filename)));
+        String std = FileApp.filename.substring(0,6) + String.valueOf(FileApp.startingDate);
+        if (FileApp.startingDate > FileApp.day)
+            std = std.substring(0, 4) + String.valueOf(FileApp.month) + std.substring(6, 8);
+        rtO.setText(String.valueOf(app.sumRange(FileApp.OUT, std, FileApp.filename)));
+        rtI.setText(String.valueOf(app.sumRange(FileApp.IN, std, FileApp.filename)));
 
         RecyclerView recyclerOut = findViewById(R.id.recyclerOut);
         RecyclerView.LayoutManager layoutManager = new LinearLayoutManager(this);
@@ -90,6 +87,26 @@ public class WiseKeep extends AppCompatActivity
         RecyclerView recyclerIn = findViewById(R.id.recyclerIn);
         adapter = new CustomAdapter(FileApp.IN);
         recyclerIn.setAdapter(adapter);
+    }
+
+    public void refreshDateAmount() {
+        TextView DI = findViewById(R.id.dateIn);
+        TextView DO = findViewById(R.id.dateOut);
+        String str = String.format(Locale.getDefault(), "%04d-%02d-%02d", FileApp.year, FileApp.month, FileApp.day);
+        DI.setText(str);
+        DO.setText(str);
+
+        TextView TO = findViewById(R.id.todayOut);
+        TextView TI = findViewById(R.id.todayIn);
+        TextView rtO = findViewById(R.id.r_tOut);
+        TextView rtI = findViewById(R.id.r_tIn);
+        TO.setText(String.valueOf(app.sumDate(FileApp.OUT, FileApp.filename)));
+        TI.setText(String.valueOf(app.sumDate(FileApp.IN, FileApp.filename)));
+        String std = FileApp.filename.substring(0,6) + String.valueOf(FileApp.startingDate);
+        if (FileApp.startingDate > FileApp.day)
+            std = std.substring(0, 4) + String.valueOf(FileApp.month) + std.substring(6, 8);
+        rtO.setText(String.valueOf(app.sumRange(FileApp.OUT, std, FileApp.filename)));
+        rtI.setText(String.valueOf(app.sumRange(FileApp.IN, std, FileApp.filename)));
     }
 
     @Override
@@ -124,7 +141,8 @@ public class WiseKeep extends AppCompatActivity
                 public void onClick(DialogInterface dialog, int which) {
                     app.readTerm(FileApp.OUT);
                     app.readTerm(FileApp.IN);
-                    // TODO: 刷新条目列表
+                    FileApp.mainAct.refreshDateAmount();
+                    FileApp.mainAct.refreshRecycler();
                     refreshRecycler();
                     dialog.dismiss();
                 }
