@@ -9,6 +9,8 @@
     <string name="add">Add</string>
     <string name="date">Date</string>
     <string name="nothing">不积小流 无以成江河</string>
+    <string name="title_activity_income">收入</string>
+    <string name="title_activity_outcome">支出</string>
     <string name="title_activity_settings">设置</string>
     <string name="title_activity_summary">统计</string>
     <string name="title_activity_new_income">新增收入</string>
@@ -32,4 +34,7 @@
     <string name="dltDecision">确定删除吗？</string>
     <string name="edtDecision">确定修改吗？</string>
     <string name="yuan">￥</string>
+    <string name="yuan_amt">￥ %.2f</string>
+    <string name="hint_amount">金额</string>
+    <string name="hint_desc">描述</string>
 </resources>

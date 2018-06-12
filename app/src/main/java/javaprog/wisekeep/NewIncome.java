@@ -12,6 +12,8 @@ import android.widget.EditText;
 import android.widget.Toast;
 import android.widget.ToggleButton;
 
+import java.util.Objects;
+
 public class NewIncome extends AppCompatActivity {
     
     public FileApp app;
@@ -21,12 +23,12 @@ public class NewIncome extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_new_income);
-        Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
+        Toolbar toolbar = findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
-        getSupportActionBar().setDisplayHomeAsUpEnabled(true);
+        Objects.requireNonNull(getSupportActionBar()).setDisplayHomeAsUpEnabled(true);
         app = (FileApp) this.getApplication();
 
-        FloatingActionButton fab = (FloatingActionButton) findViewById(R.id.fab_newin);
+        FloatingActionButton fab = findViewById(R.id.fab_newin);
         fab.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -48,11 +50,11 @@ public class NewIncome extends AppCompatActivity {
                 FileApp.inList.add(t);
                 app.saveTerm(FileApp.IN);
                 Toast.makeText(NewIncome.this, "保存成功", Toast.LENGTH_LONG).show();
-                // TODO: refresh
+                FileApp.mainAct.refreshRecycler();
                 NewIncome.this.onBackPressed();
             }
         });
-        final EditText amount = (EditText) findViewById(R.id.amount_newin);
+        final EditText amount = findViewById(R.id.amount_newin);
         amount.addTextChangedListener(new TextWatcher() {
 
             @Override
@@ -91,7 +93,7 @@ public class NewIncome extends AppCompatActivity {
         });
 
         for (int i = 0; i < FileApp.inBtnId.size(); i++) {
-            ((ToggleButton) findViewById((int) FileApp.inBtnId.get(i))).setOnCheckedChangeListener(OnChecked);
+            ((ToggleButton) findViewById(FileApp.inBtnId.get(i))).setOnCheckedChangeListener(OnChecked);
         }
     }
 
@@ -104,11 +106,11 @@ public class NewIncome extends AppCompatActivity {
                 curCheck = FileApp.inBtnId.indexOf(thisId);
                 for (int i = 0; i < FileApp.inBtnId.size(); i++) {
                     if (curCheck != i) {
-                        ((ToggleButton) findViewById((int) FileApp.inBtnId.get(i))).setChecked(false);
+                        ((ToggleButton) findViewById(FileApp.inBtnId.get(i))).setChecked(false);
                     }
                 }
             } else {
-                if ((int) FileApp.inBtnId.get(curCheck) == thisId) {
+                if (FileApp.inBtnId.get(curCheck) == thisId) {
                     buttonView.setChecked(true);
                 }
             }

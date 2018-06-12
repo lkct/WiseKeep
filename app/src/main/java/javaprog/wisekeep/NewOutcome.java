@@ -12,6 +12,8 @@ import android.widget.EditText;
 import android.widget.Toast;
 import android.widget.ToggleButton;
 
+import java.util.Objects;
+
 public class NewOutcome extends AppCompatActivity {
 
     public FileApp app;
@@ -21,12 +23,12 @@ public class NewOutcome extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_new_outcome);
-        Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
+        Toolbar toolbar = findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
-        getSupportActionBar().setDisplayHomeAsUpEnabled(true);
+        Objects.requireNonNull(getSupportActionBar()).setDisplayHomeAsUpEnabled(true);
         app = (FileApp) this.getApplication();
 
-        FloatingActionButton fab = (FloatingActionButton) findViewById(R.id.fab_newout);
+        FloatingActionButton fab = findViewById(R.id.fab_newout);
         fab.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -48,12 +50,12 @@ public class NewOutcome extends AppCompatActivity {
                 FileApp.outList.add(t);
                 app.saveTerm(FileApp.OUT);
                 Toast.makeText(NewOutcome.this, "保存成功", Toast.LENGTH_LONG).show();
-                // TODO: refresh
+                FileApp.mainAct.refreshRecycler();
                 NewOutcome.this.onBackPressed();
             }
         });
 
-        final EditText amount = (EditText) findViewById(R.id.amount_newout);
+        final EditText amount = findViewById(R.id.amount_newout);
         amount.addTextChangedListener(new TextWatcher() {
 
             @Override
@@ -92,7 +94,7 @@ public class NewOutcome extends AppCompatActivity {
         });
 
         for (int i = 0; i < FileApp.outBtnId.size(); i++) {
-            ((ToggleButton) findViewById((int) FileApp.outBtnId.get(i))).setOnCheckedChangeListener(OnChecked);
+            ((ToggleButton) findViewById(FileApp.outBtnId.get(i))).setOnCheckedChangeListener(OnChecked);
         }
     }
 
@@ -105,11 +107,11 @@ public class NewOutcome extends AppCompatActivity {
                 curCheck = FileApp.outBtnId.indexOf(thisId);
                 for (int i = 0; i < FileApp.outBtnId.size(); i++) {
                     if (curCheck != i) {
-                        ((ToggleButton) findViewById((int) FileApp.outBtnId.get(i))).setChecked(false);
+                        ((ToggleButton) findViewById(FileApp.outBtnId.get(i))).setChecked(false);
                     }
                 }
             } else {
-                if ((int) FileApp.outBtnId.get(curCheck) == thisId) {
+                if (FileApp.outBtnId.get(curCheck) == thisId) {
                     buttonView.setChecked(true);
                 }
             }
