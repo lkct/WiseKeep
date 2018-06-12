@@ -1,6 +1,5 @@
 package javaprog.wisekeep;
 
-import android.content.Context;
 import android.content.DialogInterface;
 import android.content.Intent;
 import android.os.Bundle;
@@ -10,6 +9,8 @@ import android.support.v4.widget.DrawerLayout;
 import android.support.v7.app.ActionBarDrawerToggle;
 import android.support.v7.app.AlertDialog;
 import android.support.v7.app.AppCompatActivity;
+import android.support.v7.widget.LinearLayoutManager;
+import android.support.v7.widget.RecyclerView;
 import android.support.v7.widget.Toolbar;
 import android.view.Menu;
 import android.view.MenuItem;
@@ -32,15 +33,6 @@ public class WiseKeep extends AppCompatActivity
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
 
-//        FloatingActionButton fab = (FloatingActionButton) findViewById(R.id.fab);
-//        fab.setOnClickListener(new View.OnClickListener() {
-//            @Override
-//            public void onClick(View view) {
-//                Snackbar.make(view, "Replace with your own action", Snackbar.LENGTH_LONG)
-//                        .setAction("Action", null).show();
-//            }
-//        });
-
         DrawerLayout drawer = (DrawerLayout) findViewById(R.id.drawer_layout);
         ActionBarDrawerToggle toggle = new ActionBarDrawerToggle(
                 this, drawer, toolbar, R.string.navigation_drawer_open, R.string.navigation_drawer_close);
@@ -52,13 +44,15 @@ public class WiseKeep extends AppCompatActivity
 
         TextView DI = (TextView) findViewById(R.id.dateIn);
         TextView DO = (TextView) findViewById(R.id.dateOut);
-        String str = app.filename.substring(0,4);
-        str += "-";
-        str += app.filename.substring(4,6);
-        str += "-";
-        str += app.filename.substring(6,8);
+        String str = String.format("%04d-%02d-%02d", FileApp.year, FileApp.month, FileApp.day);
         DI.setText(str);
         DO.setText(str);
+
+        RecyclerView recyclerIn = (RecyclerView) findViewById(R.id.recyclerIn);
+        RecyclerView.LayoutManager layoutManager = new LinearLayoutManager(this);
+        recyclerIn.setLayoutManager(layoutManager);
+        CustomAdapter adapter = new CustomAdapter();
+        recyclerIn.setAdapter(adapter);
 
     }
 
@@ -146,6 +140,7 @@ public class WiseKeep extends AppCompatActivity
         return false;
     }
 
+    @Override
     public void onDateChanged(DatePicker view, int year, int month, int day) {
         FileApp.year = year;
         FileApp.month = month;
