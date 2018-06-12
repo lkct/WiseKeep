@@ -22,6 +22,9 @@ import android.widget.TextView;
 import java.util.Calendar;
 import java.util.Locale;
 
+import static javaprog.wisekeep.FileApp.IN;
+import static javaprog.wisekeep.FileApp.OUT;
+import static javaprog.wisekeep.FileApp.filename;
 import static javaprog.wisekeep.FileApp.month;
 
 public class WiseKeep extends AppCompatActivity
@@ -62,16 +65,13 @@ public class WiseKeep extends AppCompatActivity
         TextView TI = findViewById(R.id.todayIn);
         TextView rtO = findViewById(R.id.r_tOut);
         TextView rtI = findViewById(R.id.r_tIn);
-        double totI = 0.0, totO = 0.0;
-        for (int i = 0; i < FileApp.inList.size(); i++) {
-            totI += FileApp.inList.get(i).amount;
-        }
-        for (int i = 0; i < FileApp.outList.size(); i++) {
-            totO += FileApp.outList.get(i).amount;
-        }
-        TO.setText(String.valueOf(totO));
-        TI.setText(String.valueOf(totI));
-        // TODO: 2 rt is of the same value, but difficult to calculate now, calc in summary first
+        TO.setText(String.valueOf(app.sumDate(OUT, filename)));
+        TI.setText(String.valueOf(app.sumDate(IN, filename)));
+        String std = filename.substring(0,6) + String.valueOf(FileApp.startingDate);
+        if (FileApp.startingDate > FileApp.day)
+            std = std.substring(0, 4) + String.valueOf(FileApp.month) + std.substring(6, 8);
+        rtO.setText(String.valueOf(app.sumRange(OUT, std, filename)));
+        rtI.setText(String.valueOf(app.sumRange(IN, std, filename)));
 
         RecyclerView recyclerOut = findViewById(R.id.recyclerOut);
         RecyclerView.LayoutManager layoutManager = new LinearLayoutManager(this);
