@@ -8,36 +8,4 @@
     tools:context=".Settings"
     tools:showIn="@layout/activity_settings">
 
-    <Button
-        android:id="@+id/set_budget"
-        android:layout_width="0dp"
-        android:layout_height="99dp"
-        android:text="预算"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.0"
-        app:layout_constraintStart_toStartOf="parent"
-        tools:layout_editor_absoluteY="0dp" />
-
-    <Button
-
-        android:id="@+id/set_startingdate"
-        android:layout_width="0dp"
-        android:layout_height="100dp"
-        android:layout_marginTop="4dp"
-        android:text="起始日期"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.0"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/set_budget" />
-
-    <Button
-        android:id="@+id/set_target"
-        android:layout_width="0dp"
-        android:layout_height="98dp"
-        android:text="目标"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.0"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/set_startingdate" />
-
 </android.support.constraint.ConstraintLayout>

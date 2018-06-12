@@ -19,13 +19,7 @@ import android.view.View;
 import android.widget.DatePicker;
 import android.widget.TextView;
 
-import java.util.Calendar;
 import java.util.Locale;
-
-import static javaprog.wisekeep.FileApp.IN;
-import static javaprog.wisekeep.FileApp.OUT;
-import static javaprog.wisekeep.FileApp.filename;
-import static javaprog.wisekeep.FileApp.month;
 
 public class WiseKeep extends AppCompatActivity
         implements NavigationView.OnNavigationItemSelectedListener, DatePicker.OnDateChangedListener {
@@ -65,13 +59,13 @@ public class WiseKeep extends AppCompatActivity
         TextView TI = findViewById(R.id.todayIn);
         TextView rtO = findViewById(R.id.r_tOut);
         TextView rtI = findViewById(R.id.r_tIn);
-        TO.setText(String.valueOf(app.sumDate(OUT, filename)));
-        TI.setText(String.valueOf(app.sumDate(IN, filename)));
-        String std = filename.substring(0,6) + String.valueOf(FileApp.startingDate);
+        TO.setText(String.valueOf(app.sumDate(FileApp.OUT, FileApp.filename)));
+        TI.setText(String.valueOf(app.sumDate(FileApp.IN, FileApp.filename)));
+        String std = FileApp.filename.substring(0,6) + String.valueOf(FileApp.startingDate);
         if (FileApp.startingDate > FileApp.day)
             std = std.substring(0, 4) + String.valueOf(FileApp.month) + std.substring(6, 8);
-        rtO.setText(String.valueOf(app.sumRange(OUT, std, filename)));
-        rtI.setText(String.valueOf(app.sumRange(IN, std, filename)));
+        rtO.setText(String.valueOf(app.sumRange(FileApp.OUT, std, FileApp.filename)));
+        rtI.setText(String.valueOf(app.sumRange(FileApp.IN, std, FileApp.filename)));
 
         RecyclerView recyclerOut = findViewById(R.id.recyclerOut);
         RecyclerView.LayoutManager layoutManager = new LinearLayoutManager(this);
@@ -134,12 +128,12 @@ public class WiseKeep extends AppCompatActivity
             });
 
             final AlertDialog dialog = builder.create();
-            View dialogView = View.inflate(WiseKeep.this, R.layout.dialog_data, null);
+            View dialogView = View.inflate(WiseKeep.this, R.layout.dialog_date, null);
             final DatePicker datePicker = dialogView.findViewById(R.id.datePicker);
             dialog.setTitle("设置日期");
             dialog.setView(dialogView);
             dialog.show();
-            datePicker.init(FileApp.year, month, FileApp.day, this);
+            datePicker.init(FileApp.year, FileApp.month - 1, FileApp.day, this);
             return true;
         } else if (id == R.id.action_add) {
             if (curIO.equals(FileApp.OUT)) {
@@ -181,13 +175,7 @@ public class WiseKeep extends AppCompatActivity
         drawer.closeDrawer(GravityCompat.START);
         return false;
     }
-    private void init(){
-        Calendar calendar = null;
-        calendar = Calendar.getInstance();
-        app.year = calendar.get(Calendar.YEAR);
-        app.month = calendar.get(Calendar.MONTH);
-        app.day = calendar.get(Calendar.DAY_OF_MONTH);
-    }
+
     @Override
     public void onDateChanged(DatePicker view, int year, int month, int day) {
         FileApp.year = year;
