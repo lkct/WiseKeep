@@ -1,6 +1,5 @@
 package javaprog.wisekeep;
 
-import android.content.Context;
 import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -47,13 +46,16 @@ public class CustomAdapter extends RecyclerView.Adapter<CustomAdapter.ViewHolder
         List l = viewHolder.getTextView();
         TextView textViewType = (TextView) l.get(0);
         TextView textViewAmt = (TextView) l.get(1);
+        FileApp.Term t = (FileApp.Term) FileApp.inList.get(position);
+        textViewType.setText((int) FileApp.inTypeStrId.get(t.type));
+        textViewAmt.setText(textViewAmt.getResources().getString(R.string.yuan_amt, t.amount));
         // textView.setText("left"); // TODO: data in list at position
         // textView2.setText("right");
     }
 
     @Override
     public int getItemCount() {
-        return 1; // TODO: length of list
+        return FileApp.inList.size();
     }
 
 }
