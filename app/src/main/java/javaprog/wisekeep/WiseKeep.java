@@ -19,10 +19,7 @@ import android.view.View;
 import android.widget.DatePicker;
 import android.widget.TextView;
 
-import java.util.Calendar;
 import java.util.Locale;
-
-import static javaprog.wisekeep.FileApp.month;
 
 public class WiseKeep extends AppCompatActivity
         implements NavigationView.OnNavigationItemSelectedListener, DatePicker.OnDateChangedListener {
@@ -134,12 +131,12 @@ public class WiseKeep extends AppCompatActivity
             });
 
             final AlertDialog dialog = builder.create();
-            View dialogView = View.inflate(WiseKeep.this, R.layout.dialog_data, null);
+            View dialogView = View.inflate(WiseKeep.this, R.layout.dialog_date, null);
             final DatePicker datePicker = dialogView.findViewById(R.id.datePicker);
             dialog.setTitle("设置日期");
             dialog.setView(dialogView);
             dialog.show();
-            datePicker.init(FileApp.year, month, FileApp.day, this);
+            datePicker.init(FileApp.year, FileApp.month - 1, FileApp.day, this);
             return true;
         } else if (id == R.id.action_add) {
             if (curIO.equals(FileApp.OUT)) {
@@ -181,13 +178,7 @@ public class WiseKeep extends AppCompatActivity
         drawer.closeDrawer(GravityCompat.START);
         return false;
     }
-    private void init(){
-        Calendar calendar = null;
-        calendar = Calendar.getInstance();
-        app.year = calendar.get(Calendar.YEAR);
-        app.month = calendar.get(Calendar.MONTH);
-        app.day = calendar.get(Calendar.DAY_OF_MONTH);
-    }
+
     @Override
     public void onDateChanged(DatePicker view, int year, int month, int day) {
         FileApp.year = year;
