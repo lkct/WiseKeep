@@ -77,6 +77,8 @@ public class FileApp extends Application {
         startingDate = 1;
         budgetPerMonth = 0;
         goalPerMonth = 0;
+        outDateList = new ArrayList<>();
+        inDateList = new ArrayList<>();
         saveSet();
     }
 
@@ -157,6 +159,16 @@ public class FileApp extends Application {
             output.writeInt(startingDate);
             output.writeInt(budgetPerMonth);
             output.writeInt(goalPerMonth);
+            output.writeInt(outDateList.size());
+            for (int i = 0; i < outDateList.size(); i++) {
+                int date = Integer.valueOf(outDateList.get(i));
+                output.writeInt(date);
+            }
+            output.writeInt(inDateList.size());
+            for (int i = 0; i < inDateList.size(); i++) {
+                int date = Integer.valueOf(inDateList.get(i));
+                output.writeInt(date);
+            }
             output.close();
             outputFile.close();
         } catch (IOException e) {
@@ -171,6 +183,18 @@ public class FileApp extends Application {
             startingDate = input.readInt();
             budgetPerMonth = input.readInt();
             goalPerMonth = input.readInt();
+            int size = input.readInt();
+            outDateList = new ArrayList<>();
+            for (int i = 0; i < size; i++) {
+                String date = String.valueOf(input.readInt());
+                outDateList.add(date);
+            }
+            size = input.readInt();
+            inDateList = new ArrayList<>();
+            for (int i = 0; i < size; i++) {
+                String date = String.valueOf(input.readInt());
+                inDateList.add(date);
+            }
             input.close();
             inputFile.close();
         } catch (FileNotFoundException e) {

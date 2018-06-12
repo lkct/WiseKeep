@@ -21,6 +21,8 @@ import android.widget.TextView;
 
 import java.util.Locale;
 
+import static javaprog.wisekeep.FileApp.month;
+
 public class WiseKeep extends AppCompatActivity
         implements NavigationView.OnNavigationItemSelectedListener, DatePicker.OnDateChangedListener {
 
@@ -49,28 +51,26 @@ public class WiseKeep extends AppCompatActivity
         curIO = FileApp.OUT;
         setTitle(R.string.title_activity_outcome);
 
-        TextView DI = (TextView) findViewById(R.id.dateIn);
-        TextView DO = (TextView) findViewById(R.id.dateOut);
-        String str = app.filename.substring(0,4); str += "-";
-        str += app.filename.substring(4,6); str += "-";
-        str += app.filename.substring(6,8);
+        TextView DI = findViewById(R.id.dateIn);
+        TextView DO = findViewById(R.id.dateOut);
+        String str = String.format(Locale.getDefault(), "%04d-%02d-%02d", FileApp.year, FileApp.month, FileApp.day);
         DI.setText(str);
         DO.setText(str);
 
-        TextView TO = (TextView) findViewById(R.id.todayOut);
-        TextView TI = (TextView) findViewById(R.id.todayIn);
-        TextView rtO = (TextView) findViewById(R.id.r_tOut);
-        TextView rtI = (TextView) findViewById(R.id.r_tIn);
+        TextView TO = findViewById(R.id.todayOut);
+        TextView TI = findViewById(R.id.todayIn);
+        TextView rtO = findViewById(R.id.r_tOut);
+        TextView rtI = findViewById(R.id.r_tIn);
         double totI = 0.0, totO = 0.0;
-        for (int i = 0; i < app.inList.size(); i++) {
-            totI += ((FileApp.Term) app.inList.get(i)).amount;
+        for (int i = 0; i < FileApp.inList.size(); i++) {
+            totI += FileApp.inList.get(i).amount;
         }
-        for (int i = 0; i < app.outList.size(); i++) {
-            totO += ((FileApp.Term) app.outList.get(i)).amount;
+        for (int i = 0; i < FileApp.outList.size(); i++) {
+            totO += FileApp.outList.get(i).amount;
         }
-        TO.setText("" + totO);
-        TI.setText("" + totI);
-        // TODO: 2 rt is of the same value, but difficult to calculate now
+        TO.setText(String.valueOf(totO));
+        TI.setText(String.valueOf(totI));
+        // TODO: 2 rt is of the same value, but difficult to calculate now, calc in summary first
 
         RecyclerView recyclerOut = findViewById(R.id.recyclerOut);
         RecyclerView.LayoutManager layoutManager = new LinearLayoutManager(this);
@@ -138,7 +138,7 @@ public class WiseKeep extends AppCompatActivity
             dialog.setTitle("设置日期");
             dialog.setView(dialogView);
             dialog.show();
-            datePicker.init(FileApp.year, FileApp.month, FileApp.day, this);
+            datePicker.init(FileApp.year, month, FileApp.day, this);
             return true;
         } else if (id == R.id.action_add) {
             if (curIO.equals(FileApp.OUT)) {
