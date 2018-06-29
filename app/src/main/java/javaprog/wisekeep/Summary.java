@@ -225,12 +225,13 @@ public class Summary extends AppCompatActivity {
                 entries.add(new PieEntry((float) sum, getString(typeStrId.get(i))));
         }
 
-        PieChart pieChart = findViewById(R.id.mPieChart);
+        PieChart pieChart = findViewById(R.id.pie);
         pieChart.setUsePercentValues(true);
         pieChart.getDescription().setEnabled(false);
         pieChart.setExtraOffsets(5, 10, 5, 5);
         pieChart.setDragDecelerationFrictionCoef(0.95f);
         pieChart.setCenterText(new SpannableString(String.format(Locale.getDefault(), "总计\n%.2f", app.sumRange(curIO, date0, date1, -1))));
+        pieChart.setCenterTextColor(Color.BLACK);
         pieChart.setCenterTextSize(24f);
         pieChart.setDrawHoleEnabled(true);
         pieChart.setHoleColor(Color.WHITE);
@@ -256,7 +257,7 @@ public class Summary extends AppCompatActivity {
         l.setYEntrySpace(0f);
         l.setYOffset(0f);
 
-        pieChart.setEntryLabelColor(Color.WHITE);
+        pieChart.setEntryLabelColor(Color.BLACK);
         pieChart.setEntryLabelTextSize(12f);
 
     }
@@ -281,9 +282,9 @@ public class Summary extends AppCompatActivity {
         dataSet.setColors(colors);
         PieData data = new PieData(dataSet);
         data.setValueFormatter(new PercentFormatter());
-        data.setValueTextSize(11f);
-        data.setValueTextColor(Color.WHITE);
-        PieChart pieChart = findViewById(R.id.mPieChart);
+        data.setValueTextSize(12f);
+        data.setValueTextColor(Color.BLACK);
+        PieChart pieChart = findViewById(R.id.pie);
         pieChart.setData(data);
         pieChart.highlightValues(null);
 

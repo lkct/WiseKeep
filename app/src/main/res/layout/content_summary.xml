@@ -74,7 +74,7 @@
         app:layout_constraintTop_toTopOf="@+id/buttonHalf" />
 
     <com.github.mikephil.charting.charts.PieChart
-        android:id="@+id/mPieChart"
+        android:id="@+id/pie"
         android:layout_width="0dp"
         android:layout_height="0dp"
         android:layout_marginBottom="8dp"
