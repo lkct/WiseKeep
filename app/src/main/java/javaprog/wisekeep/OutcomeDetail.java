@@ -11,15 +11,21 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.TextView;
 
+import java.util.Objects;
+
 public class OutcomeDetail extends AppCompatActivity {
 
+    public FileApp app;
     private Button dlt;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_outcome_detail);
         Toolbar toolbar = findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
+        Objects.requireNonNull(getSupportActionBar()).setDisplayHomeAsUpEnabled(true);
+        app = (FileApp) this.getApplication();
 
         dlt = (Button) findViewById(R.id.deleteOut);
         dlt.setOnClickListener(new View.OnClickListener() {
@@ -34,6 +40,7 @@ public class OutcomeDetail extends AppCompatActivity {
                             @Override
                             public void onClick(DialogInterface arg0, int arg1) {
                                 FileApp.outList.remove(FileApp.curDetail);
+                                app.saveTerm(FileApp.OUT);
                                 FileApp.curDetail = -1;
                                 FileApp.mainAct.refreshDateAmount();
                                 FileApp.mainAct.refreshRecycler();

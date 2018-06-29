@@ -8,4 +8,114 @@
     tools:context=".Summary"
     tools:showIn="@layout/activity_summary">
 
+    <TextView
+        android:id="@+id/textDash"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginEnd="8dp"
+        android:layout_marginStart="8dp"
+        android:layout_marginTop="8dp"
+        android:text="~"
+        android:textSize="30sp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <TextView
+        android:id="@+id/sumDateL"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginEnd="8dp"
+        android:layout_marginTop="8dp"
+        android:text="1980-01-01"
+        android:textSize="30sp"
+        app:layout_constraintEnd_toStartOf="@+id/textDash"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <TextView
+        android:id="@+id/sumDateR"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="8dp"
+        android:layout_marginTop="8dp"
+        android:text="1980-01-01"
+        android:textSize="30sp"
+        app:layout_constraintStart_toEndOf="@+id/textDash"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <Button
+        android:id="@+id/buttonHalf"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginEnd="8dp"
+        android:layout_marginStart="8dp"
+        android:layout_marginTop="8dp"
+        android:text="半年"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/textDash" />
+
+    <Button
+        android:id="@+id/buttonMonth"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginEnd="16dp"
+        android:text="一月"
+        app:layout_constraintEnd_toStartOf="@+id/buttonHalf"
+        app:layout_constraintTop_toTopOf="@+id/buttonHalf" />
+
+    <Button
+        android:id="@+id/buttonYear"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="8dp"
+        android:text="一年"
+        app:layout_constraintStart_toEndOf="@+id/buttonHalf"
+        app:layout_constraintTop_toTopOf="@+id/buttonHalf" />
+
+    <com.github.mikephil.charting.charts.PieChart
+        android:id="@+id/pie"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:layout_marginBottom="8dp"
+        android:layout_marginEnd="8dp"
+        android:layout_marginStart="8dp"
+        android:layout_marginTop="8dp"
+        android:layout_weight="1"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/switchIO" />
+
+    <Switch
+        android:id="@+id/switchIO"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginEnd="8dp"
+        android:layout_marginStart="8dp"
+        android:layout_marginTop="8dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/buttonHalf" />
+
+    <TextView
+        android:id="@+id/textViewSumOut"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginEnd="16dp"
+        android:text="支出"
+        android:textSize="20sp"
+        app:layout_constraintEnd_toStartOf="@+id/switchIO"
+        app:layout_constraintTop_toTopOf="@+id/switchIO" />
+
+    <TextView
+        android:id="@+id/textViewSumIn"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="16dp"
+        android:text="收入"
+        android:textSize="20sp"
+        app:layout_constraintStart_toEndOf="@+id/switchIO"
+        app:layout_constraintTop_toTopOf="@+id/switchIO" />
+
 </android.support.constraint.ConstraintLayout>

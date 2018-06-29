@@ -22,6 +22,9 @@ public class FileApp extends Application {
     public static final String OUT = "out";
     public static final String IN = "in";
 
+    public static final int numOutType = 6;
+    public static final int numInType = 5;
+
     public static final List<Integer> outBtnId = Arrays.asList(R.id.type0_newout, R.id.type1_newout, R.id.type2_newout,
             R.id.type3_newout, R.id.type4_newout, R.id.type5_newout);
     public static final List<Integer> inBtnId = Arrays.asList(R.id.type0_newin, R.id.type1_newin, R.id.type2_newin,
@@ -208,15 +211,18 @@ public class FileApp extends Application {
         }
     }
 
-    public double sumDate(String i_o, String date) {
+    public double sumDate(String i_o, String date, int type) {
         try {
             FileInputStream inputFile = openFileInput(i_o + date);
             DataInputStream input = new DataInputStream(inputFile);
             int size = input.readInt();
             double sum = 0;
             for (int i = 0; i < size; i++) {
-                sum += input.readDouble();
-                input.readInt();
+                double amount = input.readDouble();
+                int type_ = input.readInt();
+                if (type_ == type || type == -1) {
+                    sum += amount;
+                }
                 int len = input.readInt();
                 for (int j = 0; j < len; j++) {
                     input.readChar();
@@ -233,7 +239,7 @@ public class FileApp extends Application {
         return 0;
     }
 
-    public double sumRange(String i_o, String date0, String date1) {
+    public double sumRange(String i_o, String date0, String date1, int type) {
         ArrayList<String> dateList;
         if (i_o.equals(OUT)) {
             dateList = outDateList;
@@ -245,7 +251,7 @@ public class FileApp extends Application {
         for (int i = 0; i < size; i++) {
             if ((Integer.valueOf(dateList.get(i)) >= Integer.valueOf(date0)) &&
                     (Integer.valueOf(dateList.get(i)) <= Integer.valueOf(date1))) {
-                sum += sumDate(i_o, dateList.get(i));
+                sum += sumDate(i_o, dateList.get(i), type);
             }
         }
         return sum;
