@@ -59,13 +59,13 @@ public class WiseKeep extends AppCompatActivity
         TextView TI = findViewById(R.id.todayIn);
         TextView rtO = findViewById(R.id.r_tOut);
         TextView rtI = findViewById(R.id.r_tIn);
-        TO.setText(String.valueOf(app.sumDate(FileApp.OUT, FileApp.filename)));
-        TI.setText(String.valueOf(app.sumDate(FileApp.IN, FileApp.filename)));
+        TO.setText(String.valueOf(app.sumDate(FileApp.OUT, FileApp.filename, -1)));
+        TI.setText(String.valueOf(app.sumDate(FileApp.IN, FileApp.filename, -1)));
         String std = FileApp.filename.substring(0,6) + String.valueOf(FileApp.startingDate);
         if (FileApp.startingDate > FileApp.day)
             std = std.substring(0, 4) + String.valueOf(FileApp.month) + std.substring(6, 8);
-        rtO.setText(String.format(Locale.getDefault(),"%.2f / %d", app.sumRange(FileApp.OUT, std, FileApp.filename), FileApp.budgetPerMonth));
-        rtI.setText(String.format(Locale.getDefault(),"%.2f / %d", app.sumRange(FileApp.IN, std, FileApp.filename), FileApp.goalPerMonth));
+        rtO.setText(String.format(Locale.getDefault(),"%.2f / %d", app.sumRange(FileApp.OUT, std, FileApp.filename,-1), FileApp.budgetPerMonth));
+        rtI.setText(String.format(Locale.getDefault(),"%.2f / %d", app.sumRange(FileApp.IN, std, FileApp.filename, -1), FileApp.goalPerMonth));
 
         RecyclerView recyclerOut = findViewById(R.id.recyclerOut);
         RecyclerView.LayoutManager layoutManager = new LinearLayoutManager(this);
@@ -100,13 +100,13 @@ public class WiseKeep extends AppCompatActivity
         TextView TI = findViewById(R.id.todayIn);
         TextView rtO = findViewById(R.id.r_tOut);
         TextView rtI = findViewById(R.id.r_tIn);
-        TO.setText(String.valueOf(app.sumDate(FileApp.OUT, FileApp.filename)));
-        TI.setText(String.valueOf(app.sumDate(FileApp.IN, FileApp.filename)));
+        TO.setText(String.valueOf(app.sumDate(FileApp.OUT, FileApp.filename, -1)));
+        TI.setText(String.valueOf(app.sumDate(FileApp.IN, FileApp.filename, -1)));
         String std = FileApp.filename.substring(0,6) + String.valueOf(FileApp.startingDate);
         if (FileApp.startingDate > FileApp.day)
             std = std.substring(0, 4) + String.valueOf(FileApp.month) + std.substring(6, 8);
-        rtO.setText(String.format(Locale.getDefault(),"%.2f / %d", app.sumRange(FileApp.OUT, std, FileApp.filename), FileApp.budgetPerMonth));
-        rtI.setText(String.format(Locale.getDefault(),"%.2f / %d", app.sumRange(FileApp.IN, std, FileApp.filename), FileApp.goalPerMonth));
+        rtO.setText(String.format(Locale.getDefault(),"%.2f / %d", app.sumRange(FileApp.OUT, std, FileApp.filename, -1), FileApp.budgetPerMonth));
+        rtI.setText(String.format(Locale.getDefault(),"%.2f / %d", app.sumRange(FileApp.IN, std, FileApp.filename, -1), FileApp.goalPerMonth));
     }
 
     @Override
