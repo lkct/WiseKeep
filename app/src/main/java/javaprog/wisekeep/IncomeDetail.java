@@ -9,6 +9,8 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.TextView;
 
+import java.util.Objects;
+
 public class IncomeDetail extends AppCompatActivity {
 
     public FileApp app;
@@ -20,6 +22,7 @@ public class IncomeDetail extends AppCompatActivity {
         setContentView(R.layout.activity_income_detail);
         Toolbar toolbar = findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
+        Objects.requireNonNull(getSupportActionBar()).setDisplayHomeAsUpEnabled(true);
         app = (FileApp) this.getApplication();
 
         dlt = findViewById(R.id.deleteIn);

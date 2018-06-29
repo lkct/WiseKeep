@@ -11,6 +11,8 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.TextView;
 
+import java.util.Objects;
+
 public class OutcomeDetail extends AppCompatActivity {
 
     public FileApp app;
@@ -22,6 +24,7 @@ public class OutcomeDetail extends AppCompatActivity {
         setContentView(R.layout.activity_outcome_detail);
         Toolbar toolbar = findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
+        Objects.requireNonNull(getSupportActionBar()).setDisplayHomeAsUpEnabled(true);
         app = (FileApp) this.getApplication();
 
         dlt = (Button) findViewById(R.id.deleteOut);

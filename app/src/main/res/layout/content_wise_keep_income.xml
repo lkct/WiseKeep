@@ -45,6 +45,7 @@
         android:background="#2429b4"
         android:text="TextView"
         android:textColor="#ffffff"
+        android:textSize="30sp"
         app:layout_constraintBottom_toTopOf="@+id/guideline3"
         app:layout_constraintEnd_toStartOf="@+id/guideline"
         app:layout_constraintStart_toStartOf="parent"
