@@ -15,6 +15,7 @@
         android:layout_marginStart="8dp"
         android:layout_marginTop="8dp"
         android:text="周期起始日期"
+        android:textColor="@android:color/holo_blue_dark"
         android:textSize="24sp"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="@+id/editText_stDate" />
@@ -26,6 +27,7 @@
         android:layout_marginStart="8dp"
         android:layout_marginTop="8dp"
         android:text="每月预算"
+        android:textColor="@android:color/holo_blue_dark"
         android:textSize="24sp"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="@+id/editText_budget" />
@@ -37,6 +39,7 @@
         android:layout_marginStart="8dp"
         android:layout_marginTop="8dp"
         android:text="每月目标"
+        android:textColor="@android:color/holo_blue_dark"
         android:textSize="24sp"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="@+id/editText_goal" />
