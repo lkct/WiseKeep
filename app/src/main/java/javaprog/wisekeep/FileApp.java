@@ -95,11 +95,13 @@ public class FileApp extends Application {
             list = outList;
             if (outDateList.indexOf(filename) == -1) {
                 outDateList.add(filename);
+                saveSet();
             }
         } else {
             list = inList;
             if (inDateList.indexOf(filename) == -1) {
                 inDateList.add(filename);
+                saveSet();
             }
         }
         try {

@@ -46,6 +46,9 @@ public class WiseKeep extends AppCompatActivity
         NavigationView navigationView = findViewById(R.id.nav_view);
         navigationView.setNavigationItemSelectedListener(this);
 
+        curYear = FileApp.year;
+        curMonth = FileApp.month;
+        curDay = FileApp.day;
         curIO = FileApp.OUT;
         setTitle(R.string.title_activity_outcome);
 
