@@ -26,6 +26,7 @@ public class WiseKeep extends AppCompatActivity
 
     public FileApp app;
     public String curIO;
+    public int curYear, curMonth, curDay;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -38,8 +39,7 @@ public class WiseKeep extends AppCompatActivity
         setSupportActionBar(toolbar);
 
         DrawerLayout drawer = findViewById(R.id.drawer_layout);
-        ActionBarDrawerToggle toggle = new ActionBarDrawerToggle(
-                this, drawer, toolbar, R.string.navigation_drawer_open, R.string.navigation_drawer_close);
+        ActionBarDrawerToggle toggle = new ActionBarDrawerToggle(this, drawer, toolbar, R.string.navigation_drawer_open, R.string.navigation_drawer_close);
         drawer.addDrawerListener(toggle);
         toggle.syncState();
 
@@ -155,6 +155,10 @@ public class WiseKeep extends AppCompatActivity
             builder.setPositiveButton("确定", new DialogInterface.OnClickListener() {
                 @Override
                 public void onClick(DialogInterface dialog, int which) {
+                    FileApp.year = curYear;
+                    FileApp.month = curMonth;
+                    FileApp.day = curDay;
+                    app.makeFileName();
                     app.readTerm(FileApp.OUT);
                     app.readTerm(FileApp.IN);
                     FileApp.mainAct.refreshDateAmount();
@@ -214,10 +218,9 @@ public class WiseKeep extends AppCompatActivity
 
     @Override
     public void onDateChanged(DatePicker view, int year, int month, int day) {
-        FileApp.year = year;
-        FileApp.month = month + 1;
-        FileApp.day = day;
-        app.makeFileName();
+        curYear = year;
+        curMonth = month + 1;
+        curDay = day;
     }
 
 }
