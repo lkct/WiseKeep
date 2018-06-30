@@ -199,6 +199,11 @@ public class Summary extends AppCompatActivity {
                     break;
             }
         }
+        if (monthR == 13) {
+            yearR++;
+            monthR = 1;
+        }
+
         monthL -= (month - 1);
         if (monthL <= 0) {
             yearL--;
