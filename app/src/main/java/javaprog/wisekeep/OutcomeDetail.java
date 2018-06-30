@@ -11,6 +11,7 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.TextView;
 
+import java.util.Locale;
 import java.util.Objects;
 
 public class OutcomeDetail extends AppCompatActivity {
@@ -65,7 +66,7 @@ public class OutcomeDetail extends AppCompatActivity {
         txt2 = findViewById(R.id.disTypOut);
         txt3 = findViewById(R.id.disDesOut);
         FileApp.Term t = FileApp.outList.get(FileApp.curDetail);
-        txt1.setText(String.valueOf(t.amount));
+        txt1.setText(String.format(Locale.getDefault(), "%.2f", t.amount));
         txt2.setText(FileApp.outTypeStrId.get(t.type));
         txt3.setText(t.description);
     }
