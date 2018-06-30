@@ -38,4 +38,5 @@
     <string name="hint_amount">金额</string>
     <string name="hint_type">方式</string>
     <string name="hint_desc">描述</string>
+    <string name="stDate">起始日期</string>
 </resources>

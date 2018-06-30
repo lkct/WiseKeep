@@ -8,18 +8,17 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.TextView;
-import android.widget.Toast;
 
 import java.util.Arrays;
 import java.util.List;
 
-public class CustomAdapter extends RecyclerView.Adapter<CustomAdapter.ViewHolder> {
+public class RecyclerAdapter extends RecyclerView.Adapter<RecyclerAdapter.ViewHolder> {
 
     private final List<FileApp.Term> list;
     private final List<Integer> typeStrId;
     private final Class detailAct;
 
-    CustomAdapter(String i_o) {
+    RecyclerAdapter(String i_o) {
         if (i_o.equals(FileApp.OUT)) {
             list = FileApp.outList;
             typeStrId = FileApp.outTypeStrId;
@@ -61,7 +60,7 @@ public class CustomAdapter extends RecyclerView.Adapter<CustomAdapter.ViewHolder
     @Override
     public ViewHolder onCreateViewHolder(@NonNull ViewGroup viewGroup, int viewType) {
         View v = LayoutInflater.from(viewGroup.getContext())
-                .inflate(R.layout.row_item, viewGroup, false);
+                .inflate(R.layout.recycler_item, viewGroup, false);
 
         return new ViewHolder(v, detailAct);
     }
@@ -72,6 +71,7 @@ public class CustomAdapter extends RecyclerView.Adapter<CustomAdapter.ViewHolder
         TextView textViewType = l.get(0);
         TextView textViewAmt = l.get(1);
         FileApp.Term t = list.get(position);
+        // TODO: textViewType.setCompoundDrawablesRelative(start, null, null, null);
         textViewType.setText(typeStrId.get(t.type));
         textViewAmt.setText(textViewAmt.getResources().getString(R.string.yuan_amt, t.amount));
     }

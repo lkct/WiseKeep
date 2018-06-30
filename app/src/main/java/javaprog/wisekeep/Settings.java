@@ -5,7 +5,11 @@ import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
 import android.view.Menu;
 import android.view.MenuItem;
+import android.view.View;
+import android.widget.AdapterView;
+import android.widget.ArrayAdapter;
 import android.widget.EditText;
+import android.widget.Spinner;
 import android.widget.Toast;
 
 import java.util.Objects;
@@ -13,6 +17,7 @@ import java.util.Objects;
 public class Settings extends AppCompatActivity {
 
     public FileApp app;
+    public int curDate;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -23,6 +28,25 @@ public class Settings extends AppCompatActivity {
         app = (FileApp) this.getApplication();
 
         Objects.requireNonNull(getSupportActionBar()).setDisplayHomeAsUpEnabled(true);
+
+        EditText budget = findViewById(R.id.editText_budget);
+        budget.setText(String.valueOf(FileApp.budgetPerMonth));
+        EditText goal = findViewById(R.id.editText_goal);
+        goal.setText(String.valueOf(FileApp.goalPerMonth));
+        Spinner sp = findViewById(R.id.spinner);
+        sp.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
+            @Override
+            public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
+                curDate = position + 1;
+            }
+
+            @Override
+            public void onNothingSelected(AdapterView<?> parent) {
+
+            }
+        });
+        curDate = FileApp.startingDate;
+        sp.setSelection(curDate - 1);
     }
 
     @Override
@@ -41,20 +65,16 @@ public class Settings extends AppCompatActivity {
 
         //noinspection SimplifiableIfStatement
         if (id == R.id.action_save) {
-            String stDate = ((EditText) findViewById(R.id.editText_stDate)).getText().toString();
-            // TODO: check robust of all of Settings
-//            if (amt.equals("")) {
-//                Toast.makeText(NewOutcome.this, "请输入金额", Toast.LENGTH_LONG).show();
-//                return;
-//            }
-            FileApp.startingDate = Integer.valueOf(stDate);
+            FileApp.startingDate = curDate;
+            Toast.makeText(Settings.this, String.valueOf(FileApp.startingDate), Toast.LENGTH_LONG).show();
             String budget = ((EditText) findViewById(R.id.editText_budget)).getText().toString();
             FileApp.budgetPerMonth = Integer.valueOf(budget);
             String goal = ((EditText) findViewById(R.id.editText_goal)).getText().toString();
             FileApp.goalPerMonth = Integer.valueOf(goal);
             app.saveSet();
             Toast.makeText(Settings.this, "保存成功", Toast.LENGTH_LONG).show();
-            // TODO: refresh
+            FileApp.mainAct.refreshDateAmount();
+            FileApp.mainAct.refreshRecycler();
             return true;
         }
         return super.onOptionsItemSelected(item);

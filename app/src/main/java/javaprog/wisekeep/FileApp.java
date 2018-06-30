@@ -57,7 +57,7 @@ public class FileApp extends Application {
     @Override
     public void onCreate() {
         super.onCreate();
-        // TODO: other init
+        // other init
         readSet();
         initDate();
         makeFileName();

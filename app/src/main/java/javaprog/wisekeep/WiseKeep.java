@@ -70,22 +70,22 @@ public class WiseKeep extends AppCompatActivity
         RecyclerView recyclerOut = findViewById(R.id.recyclerOut);
         RecyclerView.LayoutManager layoutManager = new LinearLayoutManager(this);
         recyclerOut.setLayoutManager(layoutManager);
-        CustomAdapter adapter = new CustomAdapter(FileApp.OUT);
+        RecyclerAdapter adapter = new RecyclerAdapter(FileApp.OUT);
         recyclerOut.setAdapter(adapter);
         RecyclerView recyclerIn = findViewById(R.id.recyclerIn);
         layoutManager = new LinearLayoutManager(this);
         recyclerIn.setLayoutManager(layoutManager);
-        adapter = new CustomAdapter(FileApp.IN);
+        adapter = new RecyclerAdapter(FileApp.IN);
         recyclerIn.setAdapter(adapter);
 
     }
 
     public void refreshRecycler() {
         RecyclerView recyclerOut = findViewById(R.id.recyclerOut);
-        CustomAdapter adapter = new CustomAdapter(FileApp.OUT);
+        RecyclerAdapter adapter = new RecyclerAdapter(FileApp.OUT);
         recyclerOut.setAdapter(adapter);
         RecyclerView recyclerIn = findViewById(R.id.recyclerIn);
-        adapter = new CustomAdapter(FileApp.IN);
+        adapter = new RecyclerAdapter(FileApp.IN);
         recyclerIn.setAdapter(adapter);
     }
 
