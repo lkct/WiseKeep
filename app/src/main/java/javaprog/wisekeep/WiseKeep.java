@@ -46,9 +46,6 @@ public class WiseKeep extends AppCompatActivity
         NavigationView navigationView = findViewById(R.id.nav_view);
         navigationView.setNavigationItemSelectedListener(this);
 
-        curYear = FileApp.year;
-        curMonth = FileApp.month;
-        curDay = FileApp.day;
         curIO = FileApp.OUT;
         setTitle(R.string.title_activity_outcome);
 
@@ -176,6 +173,9 @@ public class WiseKeep extends AppCompatActivity
             dialog.setTitle("设置日期");
             dialog.setView(dialogView);
             dialog.show();
+            curYear = FileApp.year;
+            curMonth = FileApp.month;
+            curDay = FileApp.day;
             datePicker.init(FileApp.year, FileApp.month - 1, FileApp.day, this);
             return true;
         } else if (id == R.id.action_add) {

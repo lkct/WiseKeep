@@ -35,6 +35,8 @@ public class Summary extends AppCompatActivity {
     public List<Integer> typeStrId;
     public int yearL, monthL, dayL;
     public int yearR, monthR, dayR;
+    public int curYearL, curMonthL, curDayL;
+    public int curYearR, curMonthR, curDayR;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -56,10 +58,10 @@ public class Summary extends AppCompatActivity {
                 builder.setPositiveButton("确定", new DialogInterface.OnClickListener() {
                     @Override
                     public void onClick(DialogInterface dialog, int which) {
-                        app.readTerm(FileApp.OUT);
-                        app.readTerm(FileApp.IN);
-                        FileApp.mainAct.refreshDateAmount();
-                        FileApp.mainAct.refreshRecycler();
+                        yearL = curYearL;
+                        monthL = curMonthL;
+                        dayL = curDayL;
+                        refresh();
                         dialog.dismiss();
                     }
                 });
@@ -69,13 +71,15 @@ public class Summary extends AppCompatActivity {
                 dialog.setTitle("设置日期");
                 dialog.setView(dialogView);
                 dialog.show();
-                datePicker.init(FileApp.year, FileApp.month - 1, FileApp.day, new DatePicker.OnDateChangedListener() {
+                curYearL = yearL;
+                curMonthL = monthL;
+                curDayL = dayL;
+                datePicker.init(yearL, monthL - 1, dayL, new DatePicker.OnDateChangedListener() {
                     @Override
                     public void onDateChanged(DatePicker view, int year, int month, int day) {
-                        yearL = year;
-                        monthL = month + 1;
-                        dayL = day;
-                        refresh();
+                        curYearL = year;
+                        curMonthL = month + 1;
+                        curDayL = day;
                     }
                 });
             }
@@ -88,10 +92,10 @@ public class Summary extends AppCompatActivity {
                 builder.setPositiveButton("确定", new DialogInterface.OnClickListener() {
                     @Override
                     public void onClick(DialogInterface dialog, int which) {
-                        app.readTerm(FileApp.OUT);
-                        app.readTerm(FileApp.IN);
-                        FileApp.mainAct.refreshDateAmount();
-                        FileApp.mainAct.refreshRecycler();
+                        yearR = curYearR;
+                        monthR = curMonthR;
+                        dayR = curDayR;
+                        refresh();
                         dialog.dismiss();
                     }
                 });
@@ -101,13 +105,15 @@ public class Summary extends AppCompatActivity {
                 dialog.setTitle("设置日期");
                 dialog.setView(dialogView);
                 dialog.show();
-                datePicker.init(FileApp.year, FileApp.month - 1, FileApp.day, new DatePicker.OnDateChangedListener() {
+                curYearR = yearR;
+                curMonthR = monthR;
+                curDayR = dayR;
+                datePicker.init(yearR, monthR - 1, dayR, new DatePicker.OnDateChangedListener() {
                     @Override
                     public void onDateChanged(DatePicker view, int year, int month, int day) {
-                        yearR = year;
-                        monthR = month + 1;
-                        dayR = day;
-                        refresh();
+                        curYearR = year;
+                        curMonthR = month + 1;
+                        curDayR = day;
                     }
                 });
             }
