@@ -59,8 +59,8 @@ public class WiseKeep extends AppCompatActivity
         TextView TI = findViewById(R.id.todayIn);
         TextView rtO = findViewById(R.id.r_tOut);
         TextView rtI = findViewById(R.id.r_tIn);
-        TO.setText(String.valueOf(app.sumDate(FileApp.OUT, FileApp.filename, -1)));
-        TI.setText(String.valueOf(app.sumDate(FileApp.IN, FileApp.filename, -1)));
+        TO.setText(String.format(Locale.getDefault(), "%.2f", app.sumDate(FileApp.OUT, FileApp.filename, -1)));
+        TI.setText(String.format(Locale.getDefault(), "%.2f", app.sumDate(FileApp.IN, FileApp.filename, -1)));
         int yearL = FileApp.year;
         int monthL = FileApp.month;
         int dayL = FileApp.startingDate;
@@ -108,8 +108,8 @@ public class WiseKeep extends AppCompatActivity
         TextView TI = findViewById(R.id.todayIn);
         TextView rtO = findViewById(R.id.r_tOut);
         TextView rtI = findViewById(R.id.r_tIn);
-        TO.setText(String.valueOf(app.sumDate(FileApp.OUT, FileApp.filename, -1)));
-        TI.setText(String.valueOf(app.sumDate(FileApp.IN, FileApp.filename, -1)));
+        TO.setText(String.format(Locale.getDefault(), "%.2f", app.sumDate(FileApp.OUT, FileApp.filename, -1)));
+        TI.setText(String.format(Locale.getDefault(), "%.2f", app.sumDate(FileApp.IN, FileApp.filename, -1)));
         int yearL = FileApp.year;
         int monthL = FileApp.month;
         int dayL = FileApp.startingDate;

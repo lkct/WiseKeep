@@ -9,6 +9,7 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.TextView;
 
+import java.util.Locale;
 import java.util.Objects;
 
 public class IncomeDetail extends AppCompatActivity {
@@ -63,7 +64,7 @@ public class IncomeDetail extends AppCompatActivity {
         txt2 = findViewById(R.id.disTypIn);
         txt3 = findViewById(R.id.disDesIn);
         FileApp.Term t = FileApp.inList.get(FileApp.curDetail);
-        txt1.setText(String.valueOf(t.amount));
+        txt1.setText(String.format(Locale.getDefault(), "%.2f", t.amount));
         txt2.setText(FileApp.inTypeStrId.get(t.type));
         txt3.setText(t.description);
     }
