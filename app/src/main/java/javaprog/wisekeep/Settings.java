@@ -66,7 +66,6 @@ public class Settings extends AppCompatActivity {
         //noinspection SimplifiableIfStatement
         if (id == R.id.action_save) {
             FileApp.startingDate = curDate;
-            Toast.makeText(Settings.this, String.valueOf(FileApp.startingDate), Toast.LENGTH_LONG).show();
             String budget = ((EditText) findViewById(R.id.editText_budget)).getText().toString();
             FileApp.budgetPerMonth = Integer.valueOf(budget);
             String goal = ((EditText) findViewById(R.id.editText_goal)).getText().toString();
