@@ -22,3 +22,6 @@ Liang KCT
 YKQ 1. 7.
 LXT 2. 5. 8.
 KCT 3. 4. 6.
+
+### Reference
+https://github.com/PhilJay/MPAndroidChart
