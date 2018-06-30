@@ -62,8 +62,10 @@ public class WiseKeep extends AppCompatActivity
         TO.setText(String.valueOf(app.sumDate(FileApp.OUT, FileApp.filename, -1)));
         TI.setText(String.valueOf(app.sumDate(FileApp.IN, FileApp.filename, -1)));
         String std = FileApp.filename.substring(0,6) + String.valueOf(FileApp.startingDate);
-        if (FileApp.startingDate > FileApp.day)
-            std = std.substring(0, 4) + String.valueOf(FileApp.month) + std.substring(6, 8);
+        if (FileApp.startingDate > FileApp.day) {
+            if (FileApp.month == 1) std = String.valueOf(FileApp.year-1) + "12" + std.substring(6, 8);
+            else std = std.substring(0, 4) + String.valueOf(FileApp.month-1) + std.substring(6, 8);
+        }
         rtO.setText(String.format(Locale.getDefault(),"%.2f / %d", app.sumRange(FileApp.OUT, std, FileApp.filename,-1), FileApp.budgetPerMonth));
         rtI.setText(String.format(Locale.getDefault(),"%.2f / %d", app.sumRange(FileApp.IN, std, FileApp.filename, -1), FileApp.goalPerMonth));
 
@@ -103,8 +105,10 @@ public class WiseKeep extends AppCompatActivity
         TO.setText(String.valueOf(app.sumDate(FileApp.OUT, FileApp.filename, -1)));
         TI.setText(String.valueOf(app.sumDate(FileApp.IN, FileApp.filename, -1)));
         String std = FileApp.filename.substring(0,6) + String.valueOf(FileApp.startingDate);
-        if (FileApp.startingDate > FileApp.day)
-            std = std.substring(0, 4) + String.valueOf(FileApp.month) + std.substring(6, 8);
+        if (FileApp.startingDate > FileApp.day) {
+            if (FileApp.month == 1) std = String.valueOf(FileApp.year-1) + "12" + std.substring(6, 8);
+            else std = std.substring(0, 4) + String.valueOf(FileApp.month-1) + std.substring(6, 8);
+        }
         rtO.setText(String.format(Locale.getDefault(),"%.2f / %d", app.sumRange(FileApp.OUT, std, FileApp.filename, -1), FileApp.budgetPerMonth));
         rtI.setText(String.format(Locale.getDefault(),"%.2f / %d", app.sumRange(FileApp.IN, std, FileApp.filename, -1), FileApp.goalPerMonth));
     }
